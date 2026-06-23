@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Design tokens (Opera design system)
+ *
+ * Tailwind v4 reads custom theme values from the `@theme` block and
+ * generates matching utility classes automatically. For example,
+ * `--color-brand-600` becomes usable as `bg-brand-600`, `text-brand-600`,
+ * `border-brand-600`, etc.
+ *
+ * Keep all brand-level design decisions here so the look & feel can be
+ * tuned in one place as the site grows.
+ * ------------------------------------------------------------------ */
+@theme {
+  /* Brand — corporate blue (#1867A1) */
+  --color-brand-50: #eff6fb;
+  --color-brand-100: #d9eaf4;
+  --color-brand-200: #b8d6ea;
+  --color-brand-300: #87b8d9;
+  --color-brand-400: #4f92c0;
+  --color-brand-500: #2c75a6;
+  --color-brand-600: #1867a1; /* primary */
+  --color-brand-700: #155785;
+  --color-brand-800: #16486c;
+  --color-brand-900: #163d5a;
+  --color-brand-950: #0e2839;
+
+  /* Neutral ink scale used for text & surfaces */
+  --color-ink-50: #f6f8fa;
+  --color-ink-100: #eceff3;
+  --color-ink-200: #d7dde5;
+  --color-ink-300: #b3bdc9;
+  --color-ink-400: #8593a3;
+  --color-ink-500: #62707f;
+  --color-ink-600: #4a5663;
+  --color-ink-700: #3a444f;
+  --color-ink-800: #232b33;
+  --color-ink-900: #141a20;
+
+  /* Typography — wired to the next/font variable set in app/layout.tsx */
+  --font-sans: var(--font-sans-app), ui-sans-serif, system-ui, sans-serif;
+
+  /* Shared layout constraints */
+  --spacing-section: 5.5rem; /* default vertical rhythm between sections */
+
+  /* Radii */
+  --radius-card: 1.25rem;
+  --radius-pill: 9999px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: var(--color-ink-800);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchor jumps so the fixed header doesn't cover section tops */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Consistent, accessible focus styling across interactive elements */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  /* Reusable horizontal page padding that matches the design's gutters */
+  .container-gutter {
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-gutter {
+      padding-inline: 2rem;
+    }
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

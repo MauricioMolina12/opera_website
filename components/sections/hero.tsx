@@ -1,0 +1,140 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
+import { ArrowRightIcon } from "@/components/ui/icons";
+import type { HeroContent, Service } from "@/types/content";
+
+interface HeroProps {
+  content: HeroContent;
+  slides: Service[];
+}
+
+/**
+ * Renders the title, emphasizing the `highlight` substring if present.
+ */
+function HeroTitle({ title, highlight }: { title: string; highlight?: string }) {
+  if (!highlight || !title.includes(highlight)) {
+    return <>{title}</>;
+  }
+  const [before, after] = title.split(highlight);
+  return (
+    <>
+      {before}
+      <span className="text-brand-200">{highlight}</span>
+      {after}
+    </>
+  );
+}
+
+export function Hero({ content, slides }: HeroProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (activeIndex >= slides.length) {
+      setActiveIndex(0);
+    }
+  }, [activeIndex, slides.length]);
+
+  // Auto-advance the carousel; resets whenever the active slide changes
+  // (so manual selection restarts the timer instead of advancing early).
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const id = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % slides.length);
+    }, 9000);
+    return () => clearInterval(id);
+  }, [activeIndex, slides.length]);
+
+  const activeSlide = slides[activeIndex];
+
+  return (
+    <Container as="section" size="wide" className="max-sm:px-0! lg:pt-8 h-full">
+      <div className="relative flex h-full min-h-130 items-center overflow-hidden rounded-none sm:min-h-70 sm:rounded-3xl">
+        {/* Background image */}
+        <Image
+          src={activeSlide.image.src}
+          alt={activeSlide.image.alt}
+          fill
+          priority
+          sizes="(max-width: 1440px) 100vw, 1440px"
+          className="object-cover"
+        />
+        {/* Readability overlay */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-linear-to-t from-black/90 via-black/65 to-black/55"
+        />
+
+        <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center gap-8 px-8 py-16 text-white sm:px-12">
+          <div className="text-center">
+            <p className="text-xs uppercase tracking-[0.28em] text-white/70">
+              Nuestros servicios
+            </p>
+            <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl md:text-5xl">
+              <HeroTitle title={content.title} highlight={content.highlight} />
+            </h1>
+            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/85 text-pretty">
+              {content.subtitle}
+            </p>
+          </div>
+
+          <div className="grid w-full max-w-3xl gap-6 lg:grid-cols-[1.3fr_0.75fr] lg:items-end">
+            <div className="rounded-2xl border border-white/15 bg-black/50 p-6 shadow-2xl backdrop-blur-sm">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">
+                {activeSlide.title}
+              </p>
+              <p className="mt-3 text-xl font-semibold leading-tight sm:text-2xl">
+                {activeSlide.description}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button href={content.primaryCta.href} size="lg" variant="primary">
+                  {content.primaryCta.label}
+                  <ArrowRightIcon className="size-4" />
+                </Button>
+                {content.secondaryCta && (
+                  <Button href={content.secondaryCta.href} size="lg" variant="white">
+                    {content.secondaryCta.label}
+                  </Button>
+                )}
+              </div>
+            </div>
+
+            <div className="relative flex items-end justify-end">
+              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-linear-to-r from-black/10 via-black/0 to-black/20" />
+              <div className="relative flex w-full max-w-[16rem] flex-col items-end gap-3 rounded-2xl border border-white/10 bg-black/40 p-5 text-sm text-white/85 backdrop-blur-sm sm:w-auto">
+                <div className="text-right">
+                  <p className="text-xs uppercase tracking-[0.32em] text-white/60">Explora</p>
+                  <p className="mt-2 text-sm text-white/75">Servicio {activeIndex + 1} de {slides.length}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Carousel indicators, pinned to the bottom-right of the hero */}
+        <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 sm:bottom-6 sm:right-6">
+          {slides.map((slide, index) => (
+            <button
+              key={slide.slug}
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Ver ${slide.title}`}
+              aria-current={index === activeIndex || undefined}
+              className="transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-300"
+            >
+              {index === activeIndex ? (
+                <span className="block h-1.5 w-14 rounded-full bg-white" />
+              ) : (
+                <span className="block h-3 w-3 rounded-full border border-white/70 bg-white/10" />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    </Container>
+  );
+}
