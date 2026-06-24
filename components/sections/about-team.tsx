@@ -20,14 +20,14 @@ function initials(name: string) {
 function MemberCard({ member }: { member: TeamMember }) {
   return (
     <figure className="flex flex-col">
-      <div className="relative aspect-square overflow-hidden rounded-2xl bg-brand-50">
+      <div className="relative aspect-square h-[380px] overflow-hidden rounded-2xl bg-brand-50">
         {member.image ? (
           <Image
             src={member.image.src}
             alt={member.image.alt}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover"
+            className="object-cover object-[0_top]"
           />
         ) : (
           <div
@@ -44,7 +44,7 @@ function MemberCard({ member }: { member: TeamMember }) {
         <p className="text-sm text-ink-500">{member.role}</p>
       </figcaption>
 
-      {member.socials && member.socials.length > 0 && (
+      {/* {member.socials && member.socials.length > 0 && (
         <div className="mt-3 flex items-center gap-3">
           {member.socials.map((social) => (
             <a
@@ -59,7 +59,7 @@ function MemberCard({ member }: { member: TeamMember }) {
             </a>
           ))}
         </div>
-      )}
+      )} */}
     </figure>
   );
 }

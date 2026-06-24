@@ -117,10 +117,9 @@ export const aboutContent: AboutPageContent = {
     eyebrow: "Nuestro equipo",
     title: "Conozca a las personas detrás del producto.",
     members: [
-      { name: "Yesid Clavijo", role: "CEO", socials: teamSocials },
-      { name: "Jennifer Clavijo", role: "COO", socials: teamSocials },
-      { name: "Yesid Clavijo", role: "CEO", socials: teamSocials },
-      { name: "Yesid Clavijo", role: "CEO", socials: teamSocials },
+      { name: "Yesid Clavijo",    image: {src: "/img/team/yesid.jpg", alt: "Yesid Clavijo"},role: "CEO", socials: teamSocials },
+      { name: "Leonardo Movilla", image: {src: "/img/team/leonardo.jpg", alt: "Leonardo Movilla"},role: "Abogado comercial y corporativo", socials: teamSocials },
+      { name: "Jennifer Clavijo", image: {src: "/img/team/jennifer.jpg", alt: "Jennifer Clavijo"},role: "COO", socials: teamSocials },
     ],
   },
 };
