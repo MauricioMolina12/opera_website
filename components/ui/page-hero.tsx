@@ -42,7 +42,7 @@ function Highlighted({ text, highlight }: { text: string; highlight?: string }) 
 /**
  * Generic two-column page hero: eyebrow, headline (with optional highlight),
  * supporting copy and a CTA on the left; a framed image on the right. Shared
- * by the "Quiénes somos" and "Soluciones" pages.
+ * by the "Quiénes somos" and "solutions" pages.
  */
 export function PageHero({
   eyebrow,

@@ -13,8 +13,8 @@ export const siteConfig: SiteConfig = {
 
   nav: [
     { label: "Inicio", href: "/" },
-    { label: "Quiénes somos", href: "/quienes-somos" },
-    { label: "Soluciones", href: "/soluciones" },
+    { label: "Quiénes somos", href: "/about-us" },
+    { label: "Soluciones", href: "/solutions" },
   ],
 
   headerCta: {
@@ -39,8 +39,8 @@ export const siteConfig: SiteConfig = {
     {
       title: "Empresa",
       links: [
-        { label: "Sobre nosotros", href: "/quienes-somos" },
-        { label: "Nuestro equipo", href: "/quienes-somos#equipo" },
+        { label: "Sobre nosotros", href: "/about-us" },
+        { label: "Nuestro equipo", href: "/about-us#equipo" },
         { label: "Experiencia", href: "/#experiencia" },
         { label: "Trabaja con nosotros", href: "/#contacto" },
       ],
@@ -48,29 +48,29 @@ export const siteConfig: SiteConfig = {
     {
       title: "Servicios",
       links: [
-        { label: "Obras civiles", href: "/soluciones/obras-civiles" },
-        { label: "Aseo íntegral", href: "/soluciones/aseo-integral" },
-        { label: "Limpieza de fachadas", href: "/soluciones/limpieza-fachadas" },
-        { label: "Tratamiento de pisos", href: "/soluciones/tratamiento-pisos" },
-        { label: "Jardinería", href: "/soluciones/jardineria" },
+        { label: "Obras civiles", href: "/solutions/obras-civiles" },
+        { label: "Aseo íntegral", href: "/solutions/aseo-integral" },
+        { label: "Limpieza de fachadas", href: "/solutions/limpieza-fachadas" },
+        { label: "Tratamiento de pisos", href: "/solutions/tratamiento-pisos" },
+        { label: "Jardinería", href: "/solutions/jardineria" },
       ],
     },
     {
       title: "Enlaces rápidos",
       links: [
         { label: "Inicio", href: "/" },
-        { label: "Quiénes somos", href: "/quienes-somos" },
-        { label: "Soluciones", href: "/#soluciones" },
-        { label: "Experiencias", href: "/#experiencia" },
-        { label: "Blog", href: "/blog" },
+        { label: "Quiénes somos", href: "/about-us" },
+        { label: "Soluciones", href: "/#solutions" },
+        // { label: "Experiencias", href: "/#experiencia" },
+        // { label: "Blog", href: "/blog" },
         { label: "Contáctanos", href: "/#contacto" },
       ],
     },
   ],
 
   legalLinks: [
-    { label: "Política de cookies", href: "/legal/cookies" },
-    { label: "Términos de servicio", href: "/legal/terminos" },
-    { label: "Política de privacidad", href: "/legal/privacidad" },
+    { label: "Política de cookies", href: "/legal/cookies-policy" },
+    { label: "Términos de servicio", href: "/legal/terms-and-conditions" },
+    { label: "Política de privacidad", href: "/legal/privacy-policy" },
   ],
 };

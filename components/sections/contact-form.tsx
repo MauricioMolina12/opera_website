@@ -38,7 +38,7 @@ function Field({ id, label, type = "text", required, textarea }: FieldProps) {
           name={id}
           required={required}
           rows={4}
-          className={cn(inputClasses, "resize-y")}
+          className={cn(inputClasses, "resize-none")}
         />
       ) : (
         <input

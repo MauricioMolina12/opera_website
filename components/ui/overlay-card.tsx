@@ -42,7 +42,7 @@ function ActionPill({ action }: { action: CardAction }) {
     return (
       <button
         type="button"
-        onClick={action.onClick}
+        onClick={(e) => (e.stopPropagation(), action.onClick)}
         className={cn(className, "cursor-pointer")}
       >
         {content}
@@ -77,7 +77,7 @@ export function OverlayCard({
 }: OverlayCardProps) {
   return (
     <article
-      className={cn(
+      onClick={(e) => (e.stopPropagation(), action?.onClick?.())}      className={cn(
         "group relative aspect-[3/4] overflow-hidden rounded-2xl",
         className,
       )}
@@ -97,7 +97,7 @@ export function OverlayCard({
 
       {/* Whole-card link + corner arrow */}
       {linkArrow && (
-        <Link href={href} className="absolute inset-0" aria-label={title}>
+        <Link href={href} onClick={(e) => (e.stopPropagation(), action?.onClick?.())} className="absolute inset-0" aria-label={title}>
           <span
             aria-hidden
             className="absolute right-4 top-4 grid size-9 place-items-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-colors group-hover:bg-white group-hover:text-brand-700"

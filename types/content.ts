@@ -28,6 +28,7 @@ export interface CTA {
   variant?: "primary" | "secondary" | "ghost";
   /** Whether the link points to an external site (opens in a new tab). */
   external?: boolean;
+  onClick?:  () => void;
 }
 
 /** A navigation entry used in the header and footer. */
@@ -83,15 +84,48 @@ export interface SiteConfig {
 
 /** A service Opera offers (e.g. "Obras civiles"). */
 export interface Service {
-  /** Stable identifier; also used as the URL slug for /soluciones/[slug]. */
   slug: string;
   title: string;
+
   description: string;
+  longDescription: string;
+
   image: ImageRef;
-  /** CTA shown on the service card. */
+
+  /**
+   * Sectors this service is relevant for (e.g. "Corporativo", "Salud"). Used to
+   * group services by sector in the header "Soluciones" mega-menu.
+   */
+  sectors?: string[];
+
+  /**
+   * Icon key for this service, resolved to a lucide icon by `SolutionIcon`
+   * (see `components/ui/icons`). Kept as a plain string so this content model
+   * stays framework-agnostic.
+   */
+  icon?: string;
+
+  includes: string[];
+
+  benefits: {
+    title: string;
+    description: string;
+  }[];
+
+  process?: {
+    title: string;
+    description: string;
+  }[];
+
+  gallery?: ImageRef[];
+
+  faqs?: {
+    question: string;
+    answer: string;
+  }[];
+
   cta?: CTA;
 }
-
 /** A headline statistic (e.g. "100% Excelencia"). */
 export interface Stat {
   /** The big number/value, e.g. "100%", "+5", "+250". */
@@ -189,6 +223,34 @@ export interface SolutionHighlight {
   image: ImageRef;
 }
 
+/** A single row in the "Cómo nos comparamos" table. */
+export interface ComparisonRow {
+  /** The capability/feature being compared. */
+  feature: string;
+  /** How traditional providers handle it (rendered as a "missing" value). */
+  others: string;
+  /** How Opera handles it (rendered as an "included" value). */
+  opera: string;
+  /**
+   * When true, Opera's value is shown as a neutral badge (e.g. "Con plan")
+   * rather than a solid "included" check — mirrors the reference design.
+   */
+  operaConditional?: boolean;
+}
+
+/** "Cómo nos comparamos" comparison section. */
+export interface ComparisonContent {
+  eyebrow?: string;
+  title: string;
+  highlight?: string;
+  subtitle?: string;
+  /** Column header for the "other providers" column. */
+  othersLabel: string;
+  /** Column header for the Opera column. */
+  operaLabel: string;
+  rows: ComparisonRow[];
+}
+
 /** A sector Opera serves (e.g. "Corporativo"), shown as an image card. */
 export interface SectorItem {
   title: string;
@@ -197,7 +259,7 @@ export interface SectorItem {
   cta: CTA;
 }
 
-/** Everything rendered on the "Soluciones" page, in display order. */
+/** Everything rendered on the "solutions" page, in display order. */
 export interface SolutionsPageContent {
   hero: {
     title: string;
@@ -280,6 +342,7 @@ export interface HomeContent {
     intro: SectionIntro;
     steps: ProcessStep[];
   };
+  comparison: ComparisonContent;
   ctaBanner: CtaBannerContent;
   faq: {
     intro: SectionIntro;

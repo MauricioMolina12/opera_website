@@ -10,18 +10,18 @@ import { Section } from "@/components/ui/section";
 import { getSolutionsContent } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Soluciones",
+  title: "solutions",
   description:
-    "Soluciones integrales de Opera para optimizar espacios: tratamiento de pisos, limpieza de fachadas, jardinería y servicios para cada sector.",
+    "solutions integrales de Opera para optimizar espacios: tratamiento de pisos, limpieza de fachadas, jardinería y servicios para cada sector.",
 };
 
 /**
- * "Soluciones" page.
+ * "solutions" page.
  *
  * A thin composition layer mirroring the home and about pages: it fetches
  * content once and arranges the section components in display order.
  */
-export default async function SolucionesPage() {
+export default async function solutionsPage() {
   const solutions = await getSolutionsContent();
 
   return (

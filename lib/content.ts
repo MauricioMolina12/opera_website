@@ -43,12 +43,12 @@ export async function getSolutionsContent(): Promise<SolutionsPageContent> {
   return solutionsContent;
 }
 
-/** All services (used by the home grid and, later, the /soluciones index). */
+/** All services (used by the home grid and, later, the /solutions index). */
 export async function getServices(): Promise<Service[]> {
   return homeContent.services.items;
 }
 
-/** A single service by slug (for the future /soluciones/[slug] route). */
+/** A single service by slug (for the future /solutions/[slug] route). */
 export async function getServiceBySlug(
   slug: string,
 ): Promise<Service | undefined> {

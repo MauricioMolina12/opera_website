@@ -3,7 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { getSiteConfig } from "@/lib/content";
+import { getServices, getSiteConfig } from "@/lib/content";
 
 import "./globals.css";
 
@@ -38,12 +38,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const config = await getSiteConfig();
+  const [config, services] = await Promise.all([
+    getSiteConfig(),
+    getServices(),
+  ]);
 
   return (
     <html lang="es" className={`${sans.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-white">
-        <Header nav={config.nav} cta={config.headerCta} />
+        <Header nav={config.nav} cta={config.headerCta} solutions={services} />
         <main className="flex-1">{children}</main>
         <Footer config={config} />
       </body>

@@ -11,7 +11,7 @@ interface ServicesProps {
 }
 
 /**
- * "Soluciones" section: a carousel of service cards. The scroll mechanics and
+ * "solutions" section: a carousel of service cards. The scroll mechanics and
  * controls live in the shared `ScrollCarousel`; this only supplies the heading,
  * the optional "ver todos" link and the cards.
  */

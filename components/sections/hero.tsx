@@ -51,25 +51,44 @@ export function Hero({ content, slides }: HeroProps) {
 
   const activeSlide = slides[activeIndex];
 
+  // The slides are rendered in reverse DOM order so that advancing the carousel
+  // translates the track to the RIGHT: the incoming slide enters from the left
+  // while the current one exits to the right. `translateX` grows toward 0 as
+  // `activeIndex` increases.
+  const trackOffset = -(slides.length - 1 - activeIndex) * 100;
+
   return (
     <Container as="section" size="wide" className="max-sm:px-0! lg:pt-8 h-full">
       <div className="relative flex h-full min-h-130 items-center overflow-hidden rounded-none sm:min-h-70 sm:rounded-3xl">
-        {/* Background image */}
-        <Image
-          src={activeSlide.image.src}
-          alt={activeSlide.image.alt}
-          fill
-          priority
-          sizes="(max-width: 1440px) 100vw, 1440px"
-          className="object-cover"
-        />
+        {/* Sliding background track — one full-bleed image per slide */}
+        <div
+          aria-hidden
+          className="absolute inset-0 flex will-change-transform transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
+          style={{ transform: `translateX(${trackOffset}%)` }}
+        >
+          {slides
+            .map((slide, index) => ({ slide, index }))
+            .reverse()
+            .map(({ slide, index }) => (
+              <div key={slide.slug} className="relative h-full w-full shrink-0">
+                <Image
+                  src={slide.image.src}
+                  alt={slide.image.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 1440px) 100vw, 1440px"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+        </div>
         {/* Readability overlay */}
         <div
           aria-hidden
           className="absolute inset-0 bg-linear-to-t from-black/90 via-black/65 to-black/55"
         />
 
-        <div className="relative mx-auto flex w-full max-w-4xl flex-col items-center gap-8 px-8 py-16 text-white sm:px-12">
+        <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center gap-8 px-8 py-16 text-white sm:px-12">
           <div className="text-center">
             <p className="text-xs uppercase tracking-[0.28em] text-white/70">
               Nuestros servicios
@@ -82,14 +101,16 @@ export function Hero({ content, slides }: HeroProps) {
             </p>
           </div>
 
-          <div className="grid w-full max-w-3xl gap-6 lg:grid-cols-[1.3fr_0.75fr] lg:items-end">
+          <div className="grid w-full gap-6 lg:grid-cols-[1fr_0.75fr] lg:items-end">
             <div className="rounded-2xl border border-white/15 bg-black/50 p-6 shadow-2xl backdrop-blur-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">
-                {activeSlide.title}
-              </p>
-              <p className="mt-3 text-xl font-semibold leading-tight sm:text-2xl">
-                {activeSlide.description}
-              </p>
+              <div key={activeSlide.slug} className="animate-fade-up">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">
+                  {activeSlide.title}
+                </p>
+                <p className="mt-3 text-xl font-semibold leading-tight sm:text-2xl">
+                  {activeSlide.description}
+                </p>
+              </div>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button href={content.primaryCta.href} size="lg" variant="primary">
                   {content.primaryCta.label}
@@ -108,14 +129,15 @@ export function Hero({ content, slides }: HeroProps) {
               <div className="relative flex w-full max-w-[16rem] flex-col items-end gap-3 rounded-2xl border border-white/10 bg-black/40 p-5 text-sm text-white/85 backdrop-blur-sm sm:w-auto">
                 <div className="text-right">
                   <p className="text-xs uppercase tracking-[0.32em] text-white/60">Explora</p>
-                  <p className="mt-2 text-sm text-white/75">Servicio {activeIndex + 1} de {slides.length}</p>
+                  <p key={activeIndex} className="mt-2 text-sm text-white/75 animate-fade-up">
+                    Servicio {activeIndex + 1} de {slides.length}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Carousel indicators, pinned to the bottom-right of the hero */}
         <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 sm:bottom-6 sm:right-6">
           {slides.map((slide, index) => (
             <button

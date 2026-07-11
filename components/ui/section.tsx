@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface SectionProps {
   children: ReactNode;
-  /** Anchor id for in-page navigation (e.g. "soluciones"). */
+  /** Anchor id for in-page navigation (e.g. "solutions"). */
   id?: string;
   className?: string;
   /** Vertical padding scale. */
@@ -17,9 +17,9 @@ interface SectionProps {
 
 const spacingClasses: Record<NonNullable<SectionProps["spacing"]>, string> = {
   none: "",
-  sm: "py-12 sm:py-16",
-  md: "py-16 sm:py-20",
-  lg: "py-20 sm:py-28",
+  sm: "py-6 sm:py-16",
+  md: "py-10 sm:py-20",
+  lg: "py-12 sm:py-28",
 };
 
 const surfaceClasses: Record<NonNullable<SectionProps["surface"]>, string> = {

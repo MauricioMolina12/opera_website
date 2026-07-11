@@ -1,7 +1,7 @@
 import type { SolutionsPageContent } from "@/types/content";
 
 /**
- * "Soluciones" page editorial content.
+ * "solutions" page editorial content.
  *
  * ── Images are TEMPORARY placeholders ──────────────────────────────────────
  * Photo `src` values point to Unsplash (whitelisted in `next.config.ts`) purely
@@ -12,8 +12,12 @@ import type { SolutionsPageContent } from "@/types/content";
 
 const UNSPLASH = "https://images.unsplash.com";
 /** Build a sized, optimized Unsplash placeholder URL. */
-const ph = (id: string, w = 1200) =>
-  `${UNSPLASH}/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
+const ph = (id: string, w = 1200) => `${UNSPLASH}/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
+
+const eventTest = () => {
+  console.log("Hola");
+}
+
 
 export const solutionsContent: SolutionsPageContent = {
   hero: {
@@ -58,8 +62,7 @@ export const solutionsContent: SolutionsPageContent = {
     },
     {
       eyebrow: "Aseo integral y cafetería",
-      title:
-        "Espacios impecables y servicios de cafetería que mejoran la experiencia diaria",
+      title: "Espacios impecables y cafetería de calidad.",
       benefits: [
         "Ambientes siempre limpios, organizados y listos para operar",
         "Protocolos de limpieza profunda que garantizan higiene y bienestar",
@@ -98,7 +101,7 @@ export const solutionsContent: SolutionsPageContent = {
           src: "/img/sectors/corporate.png",
           alt: "Oficina corporativa",
         },
-        cta: { label: "Agenda tu servicio", href: "/#contacto" },
+        cta: { label: "Agenda tu servicio", href: "/#contacto", onClick: eventTest },
       },
       {
         title: "Residencial",

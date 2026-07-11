@@ -1,8 +1,7 @@
-import Image from "next/image";
-
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { ArrowRightIcon } from "@/components/ui/icons";
+import { ParallaxImage } from "@/components/ui/parallax-image";
 import type { CtaBannerContent } from "@/types/content";
 
 interface CtaBannerProps {
@@ -20,12 +19,10 @@ export function CtaBanner({ content }: CtaBannerProps) {
       <div className="relative overflow-hidden rounded-3xl">
         {content.background ? (
           <>
-            <Image
-              src={content.background.src}
-              alt={content.background.alt}
-              fill
+            <ParallaxImage
+              image={content.background}
+              className="absolute inset-0"
               sizes="(max-width: 1440px) 100vw, 1440px"
-              className="object-cover"
             />
             <div
               aria-hidden

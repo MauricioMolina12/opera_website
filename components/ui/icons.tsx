@@ -13,6 +13,15 @@ import type { SocialLink } from "@/types/content";
  * trademarked brand glyphs — rendering official brand marks as SVG is the
  * correct approach.
  */
+import {
+  Building2,
+  Grid2x2,
+  Leaf,
+  SprayCan,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
+
 export {
   ArrowRight as ArrowRightIcon,
   ArrowUpRight as ArrowUpRightIcon,
@@ -22,15 +31,35 @@ export {
   ChevronDown as ChevronDownIcon,
   Menu as MenuIcon,
   X as CloseIcon,
+  Minus as MinusIcon,
   Mail as MailIcon,
   Phone as PhoneIcon,
   MapPin as MapPinIcon,
+  ShieldCheck as ShieldCheckIcon,
 } from "lucide-react";
 
 type IconProps = SVGProps<SVGSVGElement>;
 
-/* ----------------------------- Social icons ----------------------------- */
-/* Filled brand glyphs so they read well at small sizes in the footer. */
+/* ---------------------------- Solution icons ---------------------------- */
+/* Maps a `Service.icon` key (plain string kept in content) to a lucide icon.
+   Used by the header "Soluciones" mega-menu. */
+
+const SOLUTION_ICONS: Record<string, LucideIcon> = {
+  "civil-works": Wrench,
+  cleaning: SprayCan,
+  facade: Building2,
+  floor: Grid2x2,
+  gardening: Leaf,
+};
+
+export function SolutionIcon({
+  name,
+  ...props
+}: { name?: string } & IconProps) {
+  const Icon = (name && SOLUTION_ICONS[name]) || Grid2x2;
+  return <Icon {...props} />;
+}
+
 
 function LinkedinIcon(props: IconProps) {
   return (

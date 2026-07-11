@@ -1,5 +1,6 @@
 
 import { About } from "@/components/sections/about";
+import { Comparison } from "@/components/sections/comparison";
 import { ContactForm } from "@/components/sections/contact-form";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Faq } from "@/components/sections/faq";
@@ -8,6 +9,7 @@ import { ProcessWhatsApp } from "@/components/sections/process-whatsapp";
 import { Services } from "@/components/sections/services";
 import { Stats } from "@/components/sections/stats";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { getHomeContent } from "@/lib/content";
 
@@ -29,43 +31,64 @@ export default async function HomePage() {
       </div>
 
       {/* Quiénes somos: intro statement + headline stats */}
-      <Section id="quienes-somos" surface="white">
+      <Section id="about-us" surface="white">
         <Container size="wide">
-          <About content={home.about} />
-          <div className="mt-16 sm:mt-20">
+          <Reveal>
+            <About content={home.about} />
+          </Reveal>
+          <Reveal delay={120} className="mt-16 sm:mt-20">
             <Stats items={home.stats} />
-          </div>
+          </Reveal>
         </Container>
       </Section>
 
-      {/* Soluciones: services carousel */}
-      <Section id="soluciones" surface="muted">
+      {/* solutions: services carousel */}
+      <Section id="solutions" surface="muted">
         <Container size="wide">
-          <Services intro={home.services.intro} items={home.services.items} />
+          <Reveal>
+            <Services intro={home.services.intro} items={home.services.items} />
+          </Reveal>
         </Container>
       </Section>
 
       {/* Experiencia: how we work */}
       <Section id="experiencia" surface="white">
         <Container size="wide">
-          <ProcessWhatsApp intro={home.process.intro} steps={home.process.steps} />
+          <Reveal>
+            <ProcessWhatsApp intro={home.process.intro} steps={home.process.steps} />
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* Cómo nos comparamos */}
+      <Section surface="muted">
+        <Container size="wide">
+          <Reveal>
+            <Comparison content={home.comparison} />
+          </Reveal>
         </Container>
       </Section>
 
       {/* Conversion banner */}
-      <CtaBanner content={home.ctaBanner} />
+      <Reveal>
+        <CtaBanner content={home.ctaBanner} />
+      </Reveal>
 
       {/* FAQ */}
       <Section surface="white">
         <Container size="wide">
-          <Faq intro={home.faq.intro} items={home.faq.items} />
+          <Reveal>
+            <Faq intro={home.faq.intro} items={home.faq.items} />
+          </Reveal>
         </Container>
       </Section>
 
       {/* Contacto */}
       <Section id="contacto" surface="muted">
         <Container size="wide">
-          <ContactForm content={home.contact} />
+          <Reveal>
+            <ContactForm content={home.contact} />
+          </Reveal>
         </Container>
       </Section>
     </>

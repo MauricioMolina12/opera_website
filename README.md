@@ -100,12 +100,12 @@ opera/
 
 Crea una carpeta en `app/` con un `page.tsx` (App Router, basado en archivos).
 Ejemplos previstos en la navegación: `app/blog/page.tsx`,
-`app/soluciones/[slug]/page.tsx` (los tipos `Service.slug` ya están listos).
+`app/solutions/[slug]/page.tsx` (los tipos `Service.slug` ya están listos).
 
 ### Añadir un servicio
 
 Edita `content/home.ts` → `services.items`. Cada servicio ya tiene `slug` para
-generar en el futuro la ruta `/soluciones/[slug]`.
+generar en el futuro la ruta `/solutions/[slug]`.
 
 ---
 
@@ -139,7 +139,7 @@ La migración está pensada como un **cambio de un solo archivo**: `lib/content.
 
 - [ ] Conectar el formulario de contacto a un backend (Route Handler en
       `app/api/contact/route.ts` o Server Action). Hoy es un stub en cliente.
-- [ ] Páginas `/blog` y `/soluciones/[slug]`.
+- [ ] Páginas `/blog` y `/solutions/[slug]`.
 - [ ] Páginas legales (`/legal/*`) enlazadas en el footer.
 - [ ] Reemplazar imágenes placeholder por assets de marca.
 - [ ] `opengraph-image`, `sitemap.ts` y `robots.ts` para SEO.

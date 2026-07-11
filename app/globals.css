@@ -76,10 +76,27 @@
   }
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @layer utilities {
   /* Reusable horizontal page padding that matches the design's gutters */
   .container-gutter {
     padding-inline: 1.25rem;
+  }
+
+  /* Entrance animation for content that mounts on a key change (e.g. the
+     rotating hero panel). Runs on mount, unlike a CSS transition. */
+  .animate-fade-up {
+    animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   @media (min-width: 640px) {
