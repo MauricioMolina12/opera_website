@@ -51,7 +51,7 @@ export function Comparison({ content }: ComparisonProps) {
             <div className="px-5 py-4 text-center text-sm font-semibold text-ink-400">
               {content.othersLabel}
             </div>
-            <div className="rounded-t-2xl bg-brand-600 px-5 py-4 text-center text-sm font-semibold text-white shadow-sm">
+            <div className="rounded-t-2xl bg-brand-600 px-5 py-4 text-center text-sm font-semibold text-white">
               {content.operaLabel}
             </div>
           </div>
@@ -79,12 +79,12 @@ export function Comparison({ content }: ComparisonProps) {
                   )}
                 >
                   {row.operaConditional ? (
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-center text-sm font-semibold text-ink-700 shadow-sm ring-1 ring-ink-200">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-center text-sm font-semibold text-ink-700 ring-1 ring-ink-200">
                       <ShieldCheckIcon className="size-4 shrink-0 text-brand-600" />
                       {row.opera}
                     </span>
                   ) : (
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-center text-sm font-semibold text-brand-700 shadow-sm">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-center text-sm font-semibold text-brand-700">
                       <CheckIcon className="size-4 shrink-0 text-brand-600" />
                       {row.opera}
                     </span>
