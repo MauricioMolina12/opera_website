@@ -23,7 +23,7 @@ export interface ImageRef {
 /** A call-to-action button/link. */
 export interface CTA {
   label: string;
-  href?: string;
+  href: string;
   /** Visual emphasis. Defaults to "primary" when omitted. */
   variant?: "primary" | "secondary" | "ghost";
   /** Whether the link points to an external site (opens in a new tab). */
@@ -184,7 +184,7 @@ export interface SectionIntro {
   eyebrow?: string;
   title: string;
   subtitle?: string;
-  cta?: CTA;
+  cta: CTA;
   event?: () => void;
 }
 
