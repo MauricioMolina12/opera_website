@@ -100,7 +100,7 @@ export function Header({ nav, cta, solutions }: HeaderProps) {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-100 border-b bg-white/90 backdrop-blur-md transition-shadow duration-300",
+          "fixed inset-x-0 top-0 z-50 border-b bg-white/90 backdrop-blur-md transition-shadow duration-300",
           scrolled || solutionsOpen
             ? "border-ink-100 shadow-sm"
             : "border-transparent",
