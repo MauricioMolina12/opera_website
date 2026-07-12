@@ -184,7 +184,7 @@ export interface SectionIntro {
   eyebrow?: string;
   title: string;
   subtitle?: string;
-  cta: CTA;
+  cta?: CTA;
   event?: () => void;
 }
 
