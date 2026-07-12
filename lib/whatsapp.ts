@@ -1,4 +1,4 @@
-const PHONE = "3006227196";
+const PHONE = "+573006227196";
 
 export const message_whatsapp = `Hola, buen día.
                           Estoy interesado en conocer más sobre sus servicios profesionales y recibir una propuesta adaptada a mis requerimientos.
@@ -6,7 +6,7 @@ export const message_whatsapp = `Hola, buen día.
                           Quedo atento a su respuesta. Muchas gracias.
                         `;
 
-export function whatsAppUrl(message: string): string {
+export function whatsAppUrl(message?: string): string {
   return `https://wa.me/${PHONE}?text=${encodeURIComponent(message ?? message_whatsapp)}`;
 }
 

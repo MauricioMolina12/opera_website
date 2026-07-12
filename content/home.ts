@@ -1,3 +1,4 @@
+import { whatsAppUrl } from "@/lib/whatsapp";
 import type { HomeContent } from "@/types/content";
 
 /**
@@ -13,8 +14,8 @@ import type { HomeContent } from "@/types/content";
 
 const UNSPLASH = "https://images.unsplash.com";
 /** Build a sized, optimized Unsplash placeholder URL. */
-const ph = (id: string, w = 1200) =>
-  `${UNSPLASH}/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
+const ph = (id: string, w = 1200) => `${UNSPLASH}/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
+
 
 export const homeContent: HomeContent = {
   hero: {
@@ -26,7 +27,7 @@ export const homeContent: HomeContent = {
       src: ph("1497366754035-f200968a6e72", 1920),
       alt: "Espacio corporativo moderno e impecable",
     },
-    primaryCta: { label: "Solicita una cotización", href: "/#contacto" },
+    primaryCta: { label: "Solicita una cotización", href: whatsAppUrl() },
     secondaryCta: {
       label: "Explorar",
       href: "/#about-us",

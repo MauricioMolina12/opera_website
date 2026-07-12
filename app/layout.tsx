@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
@@ -5,7 +6,10 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { getServices, getSiteConfig } from "@/lib/content";
 
+
 import "./globals.css";
+import { WhatsAppBtn } from "@/components/ui/whatsAppBtn";
+
 
 // Variable font exposed as a CSS variable consumed by `--font-sans` in globals.css.
 const sans = Plus_Jakarta_Sans({
@@ -45,10 +49,11 @@ export default async function RootLayout({
 
   return (
     <html lang="es" className={`${sans.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-white">
+      <body className="flex min-h-full flex-col bg-white relative">
         <Header nav={config.nav} cta={config.headerCta} solutions={services} />
         <main className="flex-1">{children}</main>
         <Footer config={config} />
+        <WhatsAppBtn></WhatsAppBtn>
       </body>
     </html>
   );

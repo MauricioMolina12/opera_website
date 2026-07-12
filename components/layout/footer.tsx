@@ -69,7 +69,7 @@ export function Footer({ config }: FooterProps) {
                 {config.contact.location}
               </li>
             </ul>
-
+{/* 
             {config.socials.length > 0 && (
               <div className="mt-6 flex items-center gap-3">
                 {config.socials.map((social) => (
@@ -85,7 +85,7 @@ export function Footer({ config }: FooterProps) {
                   </a>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
 
           {/* Navigation columns */}

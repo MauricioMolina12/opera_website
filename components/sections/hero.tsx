@@ -40,7 +40,6 @@ export function Hero({ content, slides }: HeroProps) {
   }, [activeIndex, slides.length]);
 
   // Auto-advance the carousel; resets whenever the active slide changes
-  // (so manual selection restarts the timer instead of advancing early).
   useEffect(() => {
     if (slides.length <= 1) return;
     const id = setInterval(() => {
@@ -51,16 +50,12 @@ export function Hero({ content, slides }: HeroProps) {
 
   const activeSlide = slides[activeIndex];
 
-  // The slides are rendered in reverse DOM order so that advancing the carousel
-  // translates the track to the RIGHT: the incoming slide enters from the left
-  // while the current one exits to the right. `translateX` grows toward 0 as
-  // `activeIndex` increases.
   const trackOffset = -(slides.length - 1 - activeIndex) * 100;
 
   return (
     <Container as="section" size="wide" className="max-sm:px-0! lg:pt-8 h-full">
       <div className="relative flex h-full min-h-130 items-center overflow-hidden rounded-none sm:min-h-70 sm:rounded-3xl">
-        {/* Sliding background track — one full-bleed image per slide */}
+        {/* Sliding background track */}
         <div
           aria-hidden
           className="absolute inset-0 flex will-change-transform transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
@@ -88,17 +83,17 @@ export function Hero({ content, slides }: HeroProps) {
           className="absolute inset-0 bg-linear-to-t from-black/90 via-black/65 to-black/55"
         />
 
-        <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center gap-8 px-8 py-16 text-white sm:px-12">
+        <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-5 py-16 text-white sm:px-12">
           <div className="text-center">
             <p className="text-xs uppercase tracking-[0.28em] text-white/70">
               Nuestros servicios
             </p>
-            <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl md:text-5xl">
+            <h1 className="mt-3 text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight tracking-tight text-balance">
               <HeroTitle title={content.title} highlight={content.highlight} />
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/85 text-pretty">
+            {/* <p className="text-[14px] sm:text-2xl md:text-5xl lg:text-6xl mx-auto mt-5 max-w-xl leading-relaxed text-white/85 text-pretty">
               {content.subtitle}
-            </p>
+            </p> */}
           </div>
 
           <div className="grid w-full gap-6 lg:grid-cols-[1fr_0.75fr] lg:items-end">
@@ -107,7 +102,7 @@ export function Hero({ content, slides }: HeroProps) {
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">
                   {activeSlide.title}
                 </p>
-                <p className="mt-3 text-xl font-semibold leading-tight sm:text-2xl">
+                <p className="mt-3 text-[16px] font-semibold leading-tight sm:text-2xl">
                   {activeSlide.description}
                 </p>
               </div>

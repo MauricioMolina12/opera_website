@@ -23,7 +23,7 @@ export interface ImageRef {
 /** A call-to-action button/link. */
 export interface CTA {
   label: string;
-  href: string;
+  href?: string;
   /** Visual emphasis. Defaults to "primary" when omitted. */
   variant?: "primary" | "secondary" | "ghost";
   /** Whether the link points to an external site (opens in a new tab). */
@@ -92,17 +92,8 @@ export interface Service {
 
   image: ImageRef;
 
-  /**
-   * Sectors this service is relevant for (e.g. "Corporativo", "Salud"). Used to
-   * group services by sector in the header "Soluciones" mega-menu.
-   */
   sectors?: string[];
 
-  /**
-   * Icon key for this service, resolved to a lucide icon by `SolutionIcon`
-   * (see `components/ui/icons`). Kept as a plain string so this content model
-   * stays framework-agnostic.
-   */
   icon?: string;
 
   includes: string[];

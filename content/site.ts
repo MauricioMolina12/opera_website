@@ -41,7 +41,7 @@ export const siteConfig: SiteConfig = {
       links: [
         { label: "Sobre nosotros", href: "/about-us" },
         { label: "Nuestro equipo", href: "/about-us#equipo" },
-        { label: "Experiencia", href: "/#experiencia" },
+        // { label: "Experiencia", href: "/#experiencia" },
         { label: "Trabaja con nosotros", href: "/#contacto" },
       ],
     },
@@ -60,7 +60,7 @@ export const siteConfig: SiteConfig = {
       links: [
         { label: "Inicio", href: "/" },
         { label: "Quiénes somos", href: "/about-us" },
-        { label: "Soluciones", href: "/#solutions" },
+        { label: "Soluciones", href: "/solutions" },
         // { label: "Experiencias", href: "/#experiencia" },
         // { label: "Blog", href: "/blog" },
         { label: "Contáctanos", href: "/#contacto" },

@@ -71,7 +71,7 @@ export default async function ServiceDetailPage({
               href="/solutions"
               className="transition-colors hover:text-brand-700"
             >
-              solutions
+              Soluciones
             </Link>
 
             <ChevronRightIcon className="size-4 text-ink-300" />
@@ -251,7 +251,7 @@ export default async function ServiceDetailPage({
         <Section surface="brand">
           <Container size="narrow">
 
-            <div className="rounded-3xl px-12 text-center">
+            <div className="rounded-3xl px-6 text-center">
 
               <h2 className="text-4xl font-semibold text-white">
                 ¿Listo para iniciar tu proyecto?
