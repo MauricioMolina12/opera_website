@@ -1,145 +1,202 @@
-# Opera — Sitio web corporativo
+<div align="center">
 
-Sitio corporativo de **Opera** (servicios de limpieza, jardinería y mantenimiento).
-Construido con **Next.js 16 (App Router)**, **React 19**, **TypeScript** y **Tailwind CSS v4**.
+# Opera
 
-El proyecto está diseñado para crecer: añadir páginas, secciones y módulos sin
-reescribir lo existente, y para conectarse a un **CMS (Sanity)** más adelante con
-cambios mínimos.
+**Sitio web corporativo para servicios de mantenimiento, limpieza y jardinería.**
+
+Construido con Next.js 16 · React 19 · TypeScript · Tailwind CSS v4
+
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+
+[Ver demo en vivo](https://operawebsite.vercel.app)
+
+</div>
 
 ---
 
-## 🚀 Puesta en marcha
+<div align="center">
+
+![Hero — Carrusel de servicios](public/img/demo/demo_1.png)
+
+![Servicios — Carrusel horizontal](public/img/demo/demo_2.png)
+
+</div>
+
+---
+
+## Acerca del proyecto
+
+Opera es el sitio corporativo de una empresa de servicios integrales ubicada en Barranquilla, Colombia. Ofrece soluciones en:
+
+- **Obras civiles** — Adecuaciones, remodelaciones y mantenimiento de infraestructura
+- **Aseo integral y cafetería** — Servicios de limpieza para empresas e instituciones
+- **Limpieza de fachadas** — Limpieza especializada para conservar la imagen del edificio
+- **Tratamiento de pisos** — Procesos de pulido y restauración
+- **Jardinería y paisajismo** — Mantenimiento de zonas verdes
+
+El proyecto está diseñado para crecer: añadir páginas, secciones y módulos sin reescribir lo existente, y para conectarse a un **CMS (Sanity)** más adelante con cambios mínimos.
+
+---
+
+## Tech stack
+
+| Categoría | Tecnología |
+|-----------|-----------|
+| Framework | [Next.js 16](https://nextjs.org/) (App Router) |
+| UI | [React 19](https://react.dev/) (Server Components por defecto) |
+| Lenguaje | [TypeScript 5](https://www.typescriptlang.org/) |
+| Estilos | [Tailwind CSS v4](https://tailwindcss.com/) con design tokens en `@theme` |
+| Iconos | [Lucide React](https://lucide.dev/) |
+| Formularios | [EmailJS](https://www.emailjs.com/) |
+| Despliegue | [Vercel](https://vercel.com/) |
+
+---
+
+## Funcionalidades
+
+- **Hero con carrusel** — Rotación automática de servicios con controles manuales
+- **Carrusel de servicios** — Scroll horizontal con snap behavior
+- **Mega-menú** — Navegación por sectores (Corporativo, Residencial, Salud, Industrial)
+- **Páginas de solución** — Ruta dinámica `/solutions/[slug]` con detalle por servicio
+- **Animaciones de scroll** — Fade-up con el componente `Reveal`
+- **Imágenes con parallax** — Efecto de profundidad en secciones clave
+- **Botón de WhatsApp** — Integración flotante para contacto directo
+- **Diseño responsive** — Mobile-first con breakpoints para todas las pantallas
+- **SEO** — Metadata por página, Open Graph con locale `es_CO`
+- **Comparativa** — Tabla Opera vs proveedores tradicionales
+- **FAQ** — Acordeón de preguntas frecuentes
+- **Páginas legales** — Privacidad, términos y condiciones, cookies
+
+---
+
+## Puesta en marcha
 
 ```bash
+# Instalar dependencias
 npm install
-npm run dev      # http://localhost:3000
+
+# Servidor de desarrollo
+npm run dev        # → http://localhost:3000
+
+# Build de producción
+npm run build
+npm run start
+
+# Linting
+npm run lint
 ```
-
-Otros scripts:
-
-```bash
-npm run build    # build de producción
-npm run start    # servir el build
-npm run lint     # ESLint
-```
-
-> ⚠️ **Versión de Next.js**: este proyecto usa Next.js 16, que tiene cambios
-> importantes respecto a versiones anteriores. La documentación oficial está
-> disponible localmente en `node_modules/next/dist/docs/`. Conviene consultarla
-> antes de introducir patrones nuevos.
 
 ---
 
-## 🗂️ Estructura del proyecto
+## Estructura del proyecto
 
 ```
 opera/
-├── app/                      # Rutas (App Router) — solo enrutado y composición
-│   ├── layout.tsx            # Layout raíz: fuentes, metadata, Header, Footer
-│   ├── page.tsx              # Home — compone las secciones
-│   └── globals.css           # Tailwind + tokens del sistema de diseño
+├── app/                          # Rutas (App Router)
+│   ├── layout.tsx                # Layout raíz: fuentes, metadata, Header, Footer
+│   ├── page.tsx                  # Home — compone las secciones
+│   ├── globals.css               # Tailwind + design tokens
+│   ├── about-us/                 # Página "Quiénes somos"
+│   ├── solutions/                # Soluciones por servicio y sector
+│   │   ├── page.tsx
+│   │   └── [slug]/page.tsx       # Detalle de cada servicio
+│   └── legal/                    # Páginas legales
 │
 ├── components/
-│   ├── ui/                   # Primitivos reutilizables y agnósticos de contenido
-│   │   ├── button.tsx        #   (Container, Section, Button, SectionHeading,
-│   │   ├── container.tsx     #    Logo, Icons…)
+│   ├── ui/                       # Primitivos reutilizables
+│   │   ├── button.tsx
+│   │   ├── container.tsx
 │   │   ├── section.tsx
-│   │   ├── section-heading.tsx
-│   │   ├── logo.tsx
-│   │   └── icons.tsx
-│   ├── layout/               # Estructura global del sitio
-│   │   ├── header.tsx        #   Header (cliente: scroll + menú móvil)
-│   │   └── footer.tsx
-│   └── sections/             # Bloques de página (uno por sección del diseño)
-│       ├── hero.tsx
-│       ├── about.tsx
-│       ├── stats.tsx
-│       ├── services.tsx      #   (cliente: carrusel)
-│       ├── process.tsx
-│       ├── cta-banner.tsx
-│       ├── faq.tsx
-│       └── contact-form.tsx  #   (cliente: formulario)
+│   │   ├── reveal.tsx            # Animación fade-up en scroll
+│   │   ├── parallax-image.tsx
+│   │   ├── scroll-carousel.tsx
+│   │   └── whatsAppBtn.tsx
+│   ├── layout/                   # Header y Footer
+│   └── sections/                 # Bloques de página (hero, services, faq…)
 │
-├── content/                  # Contenido editorial (datos locales por ahora)
-│   ├── site.ts               #   Configuración global (nav, contacto, footer)
-│   └── home.ts               #   Contenido de la home
+├── content/                      # Contenido editorial (datos locales)
+│   ├── site.ts                   # Configuración global (nav, contacto, footer)
+│   ├── home.ts                   # Contenido de la home
+│   ├── about.ts                  # Contenido de "Quiénes somos"
+│   └── solutions.ts              # Contenido de soluciones
 │
 ├── lib/
-│   ├── content.ts            # 🔌 Proveedor de contenido (única frontera de datos)
-│   └── utils.ts              # Utilidades (cn)
+│   ├── content.ts                # Proveedor de contenido (única frontera de datos)
+│   ├── whatsapp.ts               # Builders de URLs de WhatsApp
+│   └── utils.ts                  # Utilidades (cn)
 │
-└── types/
-    └── content.ts            # Modelos de contenido (contrato de datos / TS)
+├── types/
+│   └── content.ts                # Modelos de contenido (TypeScript)
+│
+└── public/img/                   # Assets estáticos (logos, banners, servicios)
 ```
-
-### Convenciones clave
-
-- **Server Components por defecto.** Solo se marca `"use client"` donde hay
-  interactividad: `header.tsx`, `services.tsx`, `contact-form.tsx`.
-- **El contenido nunca se importa directo en la UI.** Las páginas y secciones
-  reciben datos vía props desde `lib/content.ts`. Esto permite cambiar la fuente
-  de datos (a Sanity) sin tocar componentes.
-- **Tokens de diseño en un solo lugar.** Colores, tipografía y radios se definen
-  en `app/globals.css` dentro del bloque `@theme` (Tailwind v4). Genera clases
-  como `bg-brand-600`, `text-ink-500`, etc.
-- **Alias de importación**: `@/*` apunta a la raíz del proyecto
-  (p. ej. `@/components/ui/button`).
 
 ---
 
-## ➕ Cómo extender
+## Convenciones de arquitectura
 
-### Añadir una sección a la home
+**Server Components por defecto** — Solo se usa `"use client"` donde hay interactividad (header, carruseles, formulario, FAQ).
+
+**Contenido desacoplado** — Las páginas y secciones reciben datos vía props desde `lib/content.ts`. Esto permite cambiar la fuente de datos sin tocar componentes.
+
+**Design tokens centralizados** — Colores, tipografía y radios se definen en `app/globals.css` dentro del bloque `@theme` de Tailwind v4, generando clases como `bg-brand-600` y `text-ink-500`.
+
+**Alias de importación** — `@/*` apunta a la raíz del proyecto (e.g. `@/components/ui/button`).
+
+---
+
+## Cómo extender
+
+<details>
+<summary><strong>Añadir una sección a la home</strong></summary>
 
 1. Crea el componente en `components/sections/mi-seccion.tsx`.
 2. Define su contenido y tipos en `types/content.ts` + `content/home.ts`.
 3. Renderízalo en `app/page.tsx` dentro de un `<Section>` + `<Container>`.
 
-### Añadir una página nueva
+</details>
+
+<details>
+<summary><strong>Añadir una página nueva</strong></summary>
 
 Crea una carpeta en `app/` con un `page.tsx` (App Router, basado en archivos).
-Ejemplos previstos en la navegación: `app/blog/page.tsx`,
-`app/solutions/[slug]/page.tsx` (los tipos `Service.slug` ya están listos).
+Ejemplo: `app/blog/page.tsx`.
 
-### Añadir un servicio
+</details>
 
-Edita `content/home.ts` → `services.items`. Cada servicio ya tiene `slug` para
-generar en el futuro la ruta `/solutions/[slug]`.
+<details>
+<summary><strong>Añadir un servicio</strong></summary>
 
----
+Edita `content/home.ts` → `services.items`. Cada servicio tiene `slug` para generar la ruta `/solutions/[slug]`.
 
-## 🖼️ Imágenes (placeholders temporales)
+</details>
 
-Las imágenes actuales son **placeholders** servidos desde Unsplash (CDN público)
-para que el diseño se vea durante el desarrollo. Están marcadas con comentarios
-en `content/home.ts`.
+<details>
+<summary><strong>Conectar Sanity CMS</strong></summary>
 
-- Para reemplazarlas, cambia el campo `src` de cada `image` por el asset final
-  (o la URL de Sanity). El `alt` puede quedarse.
-- Los dominios permitidos para `next/image` se configuran en
-  `next.config.ts` → `images.remotePatterns`.
+La migración es un cambio de un solo archivo: `lib/content.ts`.
 
----
+1. Crear esquemas en Sanity que reflejen los modelos de `types/content.ts`.
+2. Reemplazar las funciones de `lib/content.ts` por llamadas `client.fetch(...)`. Las firmas ya son `async`.
+3. Añadir `cdn.sanity.io` a `remotePatterns` en `next.config.ts`.
 
-## 🔌 Conexión futura con Sanity (CMS)
-
-La migración está pensada como un **cambio de un solo archivo**: `lib/content.ts`.
-
-1. Crear esquemas en Sanity que reflejen los modelos de `types/content.ts`
-   (`SiteConfig`, `HomeContent`, `Service`, etc.).
-2. Reemplazar el cuerpo de las funciones de `lib/content.ts` por llamadas
-   `client.fetch(...)`. Las firmas ya son `async`, así que **el resto de la app
-   no cambia**.
-3. Añadir el host de imágenes de Sanity (`cdn.sanity.io`) a `remotePatterns`.
+</details>
 
 ---
 
-## 📝 Pendientes / siguientes pasos
+## Roadmap
 
-- [ ] Conectar el formulario de contacto a un backend (Route Handler en
-      `app/api/contact/route.ts` o Server Action). Hoy es un stub en cliente.
-- [ ] Páginas `/blog` y `/solutions/[slug]`.
-- [ ] Páginas legales (`/legal/*`) enlazadas en el footer.
-- [ ] Reemplazar imágenes placeholder por assets de marca.
-- [ ] `opengraph-image`, `sitemap.ts` y `robots.ts` para SEO.
+- [ ] Conectar formulario de contacto a backend (Route Handler o Server Action)
+- [ ] Página `/blog`
+- [ ] Reemplazar imágenes placeholder por assets de marca
+- [ ] `opengraph-image.tsx`, `sitemap.ts` y `robots.ts` para SEO
+- [ ] Integración con Sanity CMS
+
+---
+
+## Licencia
+
+Proyecto privado. Todos los derechos reservados.
