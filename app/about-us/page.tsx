@@ -12,7 +12,7 @@ import { getAboutContent } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Quiénes somos",
   description:
-    "Conoce a Opera: nuestros valores, misión y visión, y el equipo detrás de solutions integrales en limpieza, jardinería y mantenimiento.",
+    "Conoce a Opera: nuestros valores, misión y visión, y el equipo detrás de soluciones integrales en limpieza, jardinería y mantenimiento.",
 };
 
 /**

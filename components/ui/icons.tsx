@@ -15,9 +15,12 @@ import type { SocialLink } from "@/types/content";
  */
 import {
   Building2,
+  Droplets,
   Grid2x2,
   Leaf,
+  LifeBuoy,
   SprayCan,
+  Users,
   Wrench,
   type LucideIcon,
 } from "lucide-react";
@@ -35,6 +38,8 @@ export {
   Mail as MailIcon,
   Phone as PhoneIcon,
   MapPin as MapPinIcon,
+  Pause as PauseIcon,
+  Play as PlayIcon,
   ShieldCheck as ShieldCheckIcon,
 } from "lucide-react";
 
@@ -50,6 +55,10 @@ const SOLUTION_ICONS: Record<string, LucideIcon> = {
   facade: Building2,
   floor: Grid2x2,
   gardening: Leaf,
+  pool: Droplets,
+  reception: Users,
+  concierge: Building2,
+  lifeguard: LifeBuoy,
 };
 
 export function SolutionIcon({

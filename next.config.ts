@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
     root: fileURLToPath(new URL(".", import.meta.url)),
   },
   images: {
+    // Allow query strings on local images (used for cache-busting via ?v=N).
+    localPatterns: [
+      {
+        pathname: "/img/**",
+      },
+    ],
     // Remote image sources allowed by next/image.
     // These are TEMPORARY placeholder CDNs (Unsplash) used while the real
     // brand assets are pending. When the Sanity CMS is connected, add its

@@ -116,6 +116,23 @@ export interface Service {
   }[];
 
   cta?: CTA;
+
+  /** Hero-level copy for the detail page. */
+  heroSubtitle?: string;
+  /** Intro paragraph for the summary section (shorter than longDescription). */
+  summary?: string;
+  /** Razonas para elegir Opera para este servicio. */
+  whyUs?: string[];
+  /** Meta tags for SEO. */
+  seo?: {
+    metaTitle: string;
+    metaDescription: string;
+    keywords: string[];
+    ogTitle: string;
+    ogDescription: string;
+  };
+  /** AI image generation prompt for the hero image. */
+  imagePrompt?: string;
 }
 /** A headline statistic (e.g. "100% Excelencia"). */
 export interface Stat {
@@ -153,10 +170,22 @@ export interface ValueItem {
 export interface TeamMember {
   name: string;
   role: string;
+  /** Short headline shown under the name, e.g. "Angular • React • Arquitectura" */
+  specialties?: string;
   /** Optional portrait; when omitted the UI renders an initials avatar. */
   image?: ImageRef;
   /** Social profiles shown under the card. */
   socials?: SocialLink[];
+  /** Short bio (2-3 lines max) revealed on hover/expand. */
+  bio?: string;
+  /** Years of experience, e.g. "+12 años" */
+  years?: string;
+  /** Key technologies / skills. */
+  technologies?: string[];
+  /** Certifications. */
+  certifications?: string[];
+  /** Optional slug for a dedicated profile page. */
+  slug?: string;
 }
 
 /* ------------------------------------------------------------------ *
@@ -262,6 +291,7 @@ export interface SolutionsPageContent {
   sectors: {
     eyebrow?: string;
     title: string;
+    subtitle?: string;
     items: SectorItem[];
   };
   ctaBanner: CtaBannerContent;

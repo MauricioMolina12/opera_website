@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -53,26 +54,60 @@ function Field({ id, label, type = "text", required, textarea }: FieldProps) {
   );
 }
 
-/**
- * "Hablemos sobre tu próximo proyecto": contact form beside an illustrative
- * image.
- *
- * NOTE: submission is currently a client-side stub. To make it functional,
- * wire `handleSubmit` to a Next.js Route Handler (e.g. `app/api/contact/route.ts`)
- * or a Server Action that sends an email / creates a CMS lead.
- */
 export function ContactForm({ content }: ContactFormProps) {
   const [status, setStatus] = useState<Status>("idle");
+  const [toast, setToast] = useState<{ message: string } | null>(null);
+
+  const showToast = (message: string) => {
+    setToast({ message });
+    setTimeout(() => setToast(null), 4000);
+  };
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setToast(null);
+
+    const form = event.currentTarget;
+    const data = Object.fromEntries(new FormData(form)) as Record<string, string>;
+
+    // Validación client-side
+    const errors: string[] = [];
+    if (!data.nombre?.trim()) errors.push("El nombre es obligatorio");
+    if (!data.correo?.trim()) errors.push("El correo es obligatorio");
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.correo)) errors.push("El correo no es válido");
+    if (!data.mensaje?.trim()) errors.push("El mensaje es obligatorio");
+
+    if (errors.length > 0) {
+      showToast(errors.join(" · "));
+      return;
+    }
+
     setStatus("submitting");
+
     try {
-      // TODO: replace with a real POST to /api/contact (or a Server Action).
-      const data = Object.fromEntries(new FormData(event.currentTarget));
-      console.info("Contact form submission (stub):", data);
-      await new Promise((resolve) => setTimeout(resolve, 600));
-      event.currentTarget.reset();
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          nombre: data.nombre,
+          correo: data.correo,
+          empresa: data.empresa || "No especificó",
+          telefono: data.telefono || "No especificó",
+          mensaje: data.mensaje,
+          date: new Date().toLocaleDateString("es-CO", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }),
+          time: new Date().toLocaleTimeString("es-CO", {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+      );
+
+      form.reset();
       setStatus("success");
     } catch {
       setStatus("error");
@@ -81,8 +116,7 @@ export function ContactForm({ content }: ContactFormProps) {
 
   return (
     <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-16">
-      {/* Form */}
-      <div>
+      <div className="relative">
         <h2 className="text-3xl font-semibold tracking-tight text-ink-900 text-balance sm:text-4xl">
           {content.title}
         </h2>
@@ -105,7 +139,7 @@ export function ContactForm({ content }: ContactFormProps) {
             </Button>
 
             {status === "success" && (
-              <p role="status" className="text-sm font-medium text-brand-700">
+              <p role="status" className="text-sm font-medium text-green-600">
                 ¡Gracias! Te contactaremos muy pronto.
               </p>
             )}
@@ -116,9 +150,24 @@ export function ContactForm({ content }: ContactFormProps) {
             )}
           </div>
         </form>
+
+        {toast && (
+          <div
+            role="alert"
+            className="fixed bottom-6 right-6 z-50 max-w-sm animate-fade-up rounded-xl border border-red-200 bg-white px-5 py-4 shadow-lg"
+          >
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-red-100 text-xs font-bold text-red-600">
+                !
+              </span>
+              <p className="text-sm leading-relaxed text-red-700">
+                {toast.message}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
 
-      {/* Illustration */}
       <div className="relative min-h-72 overflow-hidden rounded-2xl bg-ink-50 lg:min-h-full">
         <Image
           src={content.image.src}

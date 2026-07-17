@@ -6,7 +6,7 @@ import { LegalHeader } from "../components/legal-header";
 export const metadata: Metadata = {
   title: "Términos de Servicio",
   description:
-    "Condiciones que regulan el acceso y uso del sitio web de OPERA SAS, así como la relación con los usuarios que solicitan información sobre sus servicios.",
+    "Condiciones que regulan el acceso y uso del sitio web de ASEO Y MULTISERVICIOS OPERA SAS, así como la relación con los usuarios que solicitan información sobre sus servicios.",
 };
 
 export default function TermsAndConditionsPage() {
@@ -14,7 +14,7 @@ export default function TermsAndConditionsPage() {
     <>
       <LegalHeader
         title="Términos de Servicio"
-        description="Los presentes términos regulan el acceso y uso del sitio web de OPERA SAS. Al navegar y utilizar este sitio, el usuario acepta las condiciones aquí descritas."
+        description="Los presentes términos regulan el acceso y uso del sitio web de ASEO Y MULTISERVICIOS OPERA SAS. Al navegar y utilizar este sitio, el usuario acepta las condiciones aquí descritas."
         lastUpdated="29 de junio de 2026"
       />
 
@@ -22,28 +22,29 @@ export default function TermsAndConditionsPage() {
         <LegalSection title="1. Identificación del titular">
           <p>
             El presente sitio web es operado por{" "}
-            <strong>OPERA SAS</strong>, empresa dedicada a la prestación de
-            servicios de aseo integral, obras civiles, limpieza de fachadas,
-            tratamiento de pisos y jardinería.
+            <strong>ASEO Y MULTISERVICIOS OPERA SAS</strong>, empresa dedicada a la prestación de
+            servicios de aseo integral, limpieza de fachadas,
+            tratamiento de pisos, jardinería, limpieza y mantenimiento de piscinas, conserjería,
+            recepcionistas, salvavidas, aseo empresarial y aseo corporativo.
           </p>
 
           <p>
-            <strong>Empresa:</strong> OPERA SAS
+            <strong>Empresa:</strong> ASEO Y MULTISERVICIOS OPERA SAS
             <br />
-            <strong>NIT:</strong> Pendiente por confirmar
+            <strong>NIT:</strong> 902.024.431-1
             <br />
             <strong>Domicilio:</strong> Barranquilla, Colombia
             <br />
-            <strong>Correo:</strong> multiserviciosopera@gmail.com
+            <strong>Correo:</strong> multiserviciosoperasas@gmail.com
             <br />
-            <strong>Teléfono:</strong> +57 300 6227196
+            <strong>Teléfono:</strong> 300 622 7196
           </p>
         </LegalSection>
 
         <LegalSection title="2. Objeto y aceptación">
           <p>
             Estos Términos de Servicio regulan el acceso, la navegación y el uso
-            del sitio web de OPERA SAS. El acceso y la utilización del sitio
+            del sitio web de ASEO Y MULTISERVICIOS OPERA SAS. El acceso y la utilización del sitio
             atribuyen la condición de usuario e implican la aceptación plena de
             las presentes condiciones.
           </p>
@@ -57,7 +58,7 @@ export default function TermsAndConditionsPage() {
         <LegalSection title="3. Finalidad del sitio web">
           <p>
             El sitio web tiene una finalidad informativa y comercial. A través de
-            él, los usuarios pueden conocer los servicios ofrecidos por OPERA
+            él, los usuarios pueden conocer los servicios ofrecidos por ASEO Y MULTISERVICIOS OPERA
             SAS, solicitar información, requerir cotizaciones y establecer
             contacto con la empresa.
           </p>
@@ -66,7 +67,7 @@ export default function TermsAndConditionsPage() {
             La información publicada sobre los servicios tiene carácter
             orientativo y no constituye una oferta contractual vinculante. Las
             condiciones definitivas de cada servicio se acordarán directamente
-            entre OPERA SAS y el cliente.
+            entre ASEO Y MULTISERVICIOS OPERA SAS y el cliente.
           </p>
         </LegalSection>
 
@@ -106,7 +107,7 @@ export default function TermsAndConditionsPage() {
           </p>
 
           <p>
-            La relación contractual entre OPERA SAS y el cliente se perfeccionará
+            La relación contractual entre ASEO Y MULTISERVICIOS OPERA SAS y el cliente se perfeccionará
             únicamente mediante los acuerdos específicos que se suscriban para la
             prestación de los servicios.
           </p>
@@ -116,13 +117,13 @@ export default function TermsAndConditionsPage() {
           <p>
             Todos los contenidos del sitio web, incluyendo textos, imágenes,
             logotipos, marcas, diseños, gráficos y su estructura, son propiedad
-            de OPERA SAS o de terceros que han autorizado su uso, y se encuentran
+            de ASEO Y MULTISERVICIOS OPERA SAS o de terceros que han autorizado su uso, y se encuentran
             protegidos por la normativa sobre propiedad intelectual e industrial.
           </p>
 
           <p>
             Queda prohibida su reproducción, distribución, comunicación pública o
-            transformación total o parcial sin la autorización expresa de OPERA
+            transformación total o parcial sin la autorización expresa de ASEO Y MULTISERVICIOS OPERA
             SAS.
           </p>
         </LegalSection>
@@ -130,7 +131,7 @@ export default function TermsAndConditionsPage() {
         <LegalSection title="7. Enlaces a terceros">
           <p>
             El sitio web puede contener enlaces a plataformas de terceros, como
-            WhatsApp o redes sociales. OPERA SAS no es responsable del contenido,
+            WhatsApp o redes sociales. ASEO Y MULTISERVICIOS OPERA SAS no es responsable del contenido,
             las políticas ni las prácticas de dichos sitios externos, cuyo acceso
             se realiza bajo la exclusiva responsabilidad del usuario.
           </p>
@@ -138,7 +139,7 @@ export default function TermsAndConditionsPage() {
 
         <LegalSection title="8. Responsabilidad">
           <p>
-            OPERA SAS procura mantener el sitio web disponible y con información
+            ASEO Y MULTISERVICIOS OPERA SAS procura mantener el sitio web disponible y con información
             actualizada; sin embargo, no garantiza la ausencia de interrupciones,
             errores o inexactitudes, ni se responsabiliza por los daños que
             pudieran derivarse del uso del sitio o de la imposibilidad de
@@ -162,7 +163,7 @@ export default function TermsAndConditionsPage() {
 
         <LegalSection title="10. Modificaciones">
           <p>
-            OPERA SAS podrá modificar en cualquier momento los presentes Términos
+            ASEO Y MULTISERVICIOS OPERA SAS podrá modificar en cualquier momento los presentes Términos
             de Servicio para adaptarlos a cambios legales, regulatorios,
             tecnológicos o relacionados con sus servicios. La versión vigente
             estará siempre disponible en este sitio web e indicará la fecha de su
@@ -187,7 +188,7 @@ export default function TermsAndConditionsPage() {
           </p>
 
           <p>
-            <strong>multiserviciosopera@gmail.com</strong>
+            <strong>multiserviciosoperasas@gmail.com</strong>
           </p>
         </LegalSection>
       </div>

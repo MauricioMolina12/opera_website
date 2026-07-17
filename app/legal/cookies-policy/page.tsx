@@ -6,7 +6,7 @@ import { LegalHeader } from "../components/legal-header";
 export const metadata: Metadata = {
   title: "Política de Cookies",
   description:
-    "Conozca qué son las cookies, cuáles utiliza el sitio web de OPERA SAS y cómo puede gestionarlas o desactivarlas desde su navegador.",
+    "Conozca qué son las cookies, cuáles utiliza el sitio web de ASEO Y MULTISERVICIOS OPERA SAS y cómo puede gestionarlas o desactivarlas desde su navegador.",
 };
 
 export default function CookiesPolicyPage() {
@@ -14,7 +14,7 @@ export default function CookiesPolicyPage() {
     <>
       <LegalHeader
         title="Política de Cookies"
-        description="Esta política explica qué son las cookies, con qué finalidad las utiliza el sitio web de OPERA SAS y las opciones con las que cuenta el usuario para administrarlas o desactivarlas en cualquier momento."
+        description="Esta política explica qué son las cookies, con qué finalidad las utiliza el sitio web de ASEO Y MULTISERVICIOS OPERA SAS y las opciones con las que cuenta el usuario para administrarlas o desactivarlas en cualquier momento."
         lastUpdated="11 de julio de 2026"
       />
 
@@ -31,14 +31,14 @@ export default function CookiesPolicyPage() {
           <p>
             Además de las cookies, pueden utilizarse tecnologías similares como
             el almacenamiento local del navegador, que cumplen funciones
-            equivalentes. En esta política, el término &quot;cookies&quot;
+            equivalentes. En esta política, el término "cookies"
             comprende también dichas tecnologías.
           </p>
         </LegalSection>
 
         <LegalSection title="2. Cómo utilizamos las cookies">
           <p>
-            El sitio web de OPERA SAS utiliza cookies con el objetivo de
+            El sitio web de ASEO Y MULTISERVICIOS OPERA SAS utiliza cookies con el objetivo de
             garantizar su correcto funcionamiento, recordar las preferencias del
             usuario y comprender de forma general cómo se utiliza el sitio, con
             el fin de mejorarlo continuamente.
@@ -86,7 +86,7 @@ export default function CookiesPolicyPage() {
         <LegalSection title="4. Cookies de terceros">
           <p>
             Algunas funcionalidades del sitio dependen de proveedores externos
-            que pueden instalar cookies en el dispositivo del usuario. OPERA SAS
+            que pueden instalar cookies en el dispositivo del usuario. ASEO Y MULTISERVICIOS OPERA SAS
             no controla dichas cookies ni tiene acceso a la información que estos
             terceros recopilan a través de ellas.
           </p>
@@ -130,7 +130,7 @@ export default function CookiesPolicyPage() {
 
         <LegalSection title="7. Modificaciones de esta política">
           <p>
-            OPERA SAS podrá actualizar esta Política de Cookies cuando resulte
+            ASEO Y MULTISERVICIOS OPERA SAS podrá actualizar esta Política de Cookies cuando resulte
             necesario para adaptarla a cambios legales, tecnológicos o
             relacionados con el funcionamiento del sitio web. La versión vigente
             estará siempre disponible en este sitio e indicará la fecha de su
@@ -146,7 +146,7 @@ export default function CookiesPolicyPage() {
           </p>
 
           <p>
-            <strong>multiserviciosopera@gmail.com</strong>
+            <strong>multiserviciosoperasas@gmail.com</strong>
           </p>
         </LegalSection>
       </div>

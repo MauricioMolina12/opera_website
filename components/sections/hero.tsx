@@ -5,7 +5,13 @@ import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { ArrowRightIcon } from "@/components/ui/icons";
+import {
+  ArrowRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  PauseIcon,
+  PlayIcon,
+} from "@/components/ui/icons";
 import type { HeroContent, Service } from "@/types/content";
 
 interface HeroProps {
@@ -32,6 +38,7 @@ function HeroTitle({ title, highlight }: { title: string; highlight?: string }) 
 
 export function Hero({ content, slides }: HeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (activeIndex >= slides.length) {
@@ -39,14 +46,18 @@ export function Hero({ content, slides }: HeroProps) {
     }
   }, [activeIndex, slides.length]);
 
-  // Auto-advance the carousel; resets whenever the active slide changes
+  // Auto-advance the carousel; pauses when `paused` is true
   useEffect(() => {
-    if (slides.length <= 1) return;
+    if (slides.length <= 1 || paused) return;
     const id = setInterval(() => {
       setActiveIndex((current) => (current + 1) % slides.length);
     }, 9000);
     return () => clearInterval(id);
-  }, [activeIndex, slides.length]);
+  }, [activeIndex, paused, slides.length]);
+
+  const goNext = () => setActiveIndex((c) => (c + 1) % slides.length);
+  const goPrev = () => setActiveIndex((c) => (c - 1 + slides.length) % slides.length);
+  const togglePause = () => setPaused((p) => !p);
 
   const activeSlide = slides[activeIndex];
 
@@ -112,8 +123,9 @@ export function Hero({ content, slides }: HeroProps) {
                   <ArrowRightIcon className="size-4" />
                 </Button>
                 {content.secondaryCta && (
-                  <Button href={content.secondaryCta.href} size="lg" variant="white">
+                  <Button href={`/solutions/${activeSlide.slug}`} size="lg" variant="white">
                     {content.secondaryCta.label}
+                    <ArrowRightIcon className="size-4" />
                   </Button>
                 )}
               </div>
@@ -133,23 +145,59 @@ export function Hero({ content, slides }: HeroProps) {
           </div>
         </div>
 
-        <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 sm:bottom-6 sm:right-6">
-          {slides.map((slide, index) => (
+        {/* Bottom controls: progress dots + arrows + play/pause */}
+        <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 pb-4 sm:px-6 sm:pb-6">
+          {/* Progress dots */}
+          <div className="flex items-center gap-2">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.slug}
+                type="button"
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Ver ${slide.title}`}
+                aria-current={index === activeIndex || undefined}
+                className="transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-300"
+              >
+                {index === activeIndex ? (
+                  <span className="block h-1.5 w-14 rounded-full bg-white" />
+                ) : (
+                  <span className="block h-3 w-3 rounded-full border border-white/70 bg-white/10" />
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Arrows + play/pause */}
+          <div className="flex items-center gap-2">
             <button
-              key={slide.slug}
               type="button"
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Ver ${slide.title}`}
-              aria-current={index === activeIndex || undefined}
-              className="transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-300"
+              onClick={goPrev}
+              aria-label="Anterior servicio"
+              className="cursor-pointer grid size-9 place-items-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/25"
             >
-              {index === activeIndex ? (
-                <span className="block h-1.5 w-14 rounded-full bg-white" />
+              <ChevronLeftIcon className="size-5" />
+            </button>
+            <button
+              type="button"
+              onClick={goNext}
+              aria-label="Siguiente servicio"
+              className="cursor-pointer grid size-9 place-items-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/25"
+            >
+              <ChevronRightIcon className="size-5" />
+            </button>
+            <button
+              type="button"
+              onClick={togglePause}
+              aria-label={paused ? "Reanudar auto-avance" : "Pausar auto-avance"}
+              className="cursor-pointer grid size-9 place-items-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/25"
+            >
+              {paused ? (
+                <PlayIcon className="size-5" />
               ) : (
-                <span className="block h-3 w-3 rounded-full border border-white/70 bg-white/10" />
+                <PauseIcon className="size-5" />
               )}
             </button>
-          ))}
+          </div>
         </div>
       </div>
     </Container>

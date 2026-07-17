@@ -17,8 +17,8 @@ interface ContainerProps {
 
 const sizeClasses: Record<NonNullable<ContainerProps["size"]>, string> = {
   narrow: "max-w-3xl",
-  default: "max-w-6xl",
-  wide: "max-w-[90rem]",
+  default: "max-w-7xl",
+  wide: "max-w-[100rem]",
 };
 
 /**

@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
   },
 
   contact: {
-    email: "multiserviciosopera@gmail.com",
+    email: "multiserviciosoperasas@gmail.com",
     phone: "+57 300 6227196",
     location: "Barranquilla, Atlántico.",
     whatsappUrl: "https://wa.me/573008236761",
@@ -48,11 +48,15 @@ export const siteConfig: SiteConfig = {
     {
       title: "Servicios",
       links: [
-        { label: "Obras civiles", href: "/solutions/obras-civiles" },
-        { label: "Aseo íntegral", href: "/solutions/aseo-integral" },
-        { label: "Limpieza de fachadas", href: "/solutions/limpieza-fachadas" },
-        { label: "Tratamiento de pisos", href: "/solutions/tratamiento-pisos" },
-        { label: "Jardinería", href: "/solutions/jardineria" },
+        { label: "Aseo integral empresarial", href: "/solutions/aseo-integral" },
+        { label: "Limpieza profesional de fachadas", href: "/solutions/limpieza-fachadas" },
+        { label: "Tratamiento y restauración de pisos", href: "/solutions/tratamiento-pisos" },
+        { label: "Mantenimiento de zonas verdes", href: "/solutions/jardineria" },
+        { label: "Mantenimiento profesional de piscinas", href: "/solutions/limpieza-mantenimiento-piscinas" },
+        { label: "Servicio de recepción", href: "/solutions/recepcionista" },
+        { label: "Conserjería", href: "/solutions/conserjeria" },
+        { label: "Salvavidas", href: "/solutions/salvavidas" },
+        { label: "Aseo corporativo integral", href: "/solutions/aseo-corporativo-integral" },
       ],
     },
     {

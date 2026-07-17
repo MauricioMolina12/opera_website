@@ -27,7 +27,7 @@ interface HeaderProps {
 const SOLUTIONS_HREF = "/solutions";
 
 /** Preferred left-to-right order for the sector columns. */
-const SECTOR_ORDER = ["Corporativo", "Residencial", "Salud", "Industrial"];
+const SECTOR_ORDER = ["Instituciones", "Corporativo", "Residencial", "Salud", "Industrial"];
 
 /** Group services by the sectors they serve, in `SECTOR_ORDER`. */
 function groupBySector(services: Service[]) {
@@ -96,6 +96,18 @@ export function Header({ nav, cta, solutions }: HeaderProps) {
   const hasMegaMenu = (href: string) =>
     href === SOLUTIONS_HREF && sectorGroups.length > 0;
 
+  /** Structured data for each sector card: name, icon label, and associated services. */
+  const sectorCards = useMemo(() => {
+    return sectorGroups.map(([sector, services]) => ({
+      name: sector,
+      services: services.map((s) => ({
+        slug: s.slug,
+        title: s.title,
+        icon: s.icon,
+      })),
+    }));
+  }, [sectorGroups]);
+
   return (
     <>
       <header
@@ -106,7 +118,7 @@ export function Header({ nav, cta, solutions }: HeaderProps) {
             : "border-transparent",
         )}
       >
-        <div className="mx-auto flex h-20 max-w-[90rem] items-center justify-between container-gutter">
+        <div className="mx-auto flex h-20 max-w-[100rem] items-center justify-between container-gutter">
           {/* Left: logo */}
           <Logo />
 
@@ -188,7 +200,7 @@ export function Header({ nav, cta, solutions }: HeaderProps) {
           </div>
         </div>
 
-        {/* Solutions mega-menu (desktop) */}
+        {/* Solutions mega-menu (desktop) — flat grid of unique services */}
         <div
           onMouseEnter={openSolutions}
           onMouseLeave={scheduleCloseSolutions}
@@ -199,10 +211,10 @@ export function Header({ nav, cta, solutions }: HeaderProps) {
               : "pointer-events-none -translate-y-2 opacity-0",
           )}
         >
-          <div className="mx-auto max-w-[90rem] container-gutter py-8">
+          <div className="mx-auto max-w-[100rem] container-gutter py-8">
             <div className="mb-6 flex items-center justify-between">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-ink-400">
-                Soluciones por sector
+                Nuestros servicios
               </p>
               <Link
                 href={SOLUTIONS_HREF}
@@ -212,33 +224,20 @@ export function Header({ nav, cta, solutions }: HeaderProps) {
               </Link>
             </div>
 
-            <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
-              {sectorGroups.map(([sector, services]) => (
-                <div key={sector}>
-                  <p className="mb-3 text-sm font-semibold text-ink-900">
-                    {sector}
-                  </p>
-                  <ul className="space-y-1">
-                    {services.map((service) => (
-                      <li key={service.slug}>
-                        <Link
-                          href={`${SOLUTIONS_HREF}/${service.slug}`}
-                          className="group/link flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-brand-50"
-                        >
-                          <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600 transition-colors group-hover/link:bg-brand-600 group-hover/link:text-white">
-                            <SolutionIcon
-                              name={service.icon}
-                              className="size-5"
-                            />
-                          </span>
-                          <span className="text-sm font-medium text-ink-600 transition-colors group-hover/link:text-brand-700">
-                            {service.title}
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+              {solutions.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`${SOLUTIONS_HREF}/${service.slug}`}
+                  className="group/link flex items-center gap-3 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-brand-200 hover:shadow-sm hover:bg-brand-50/40"
+                >
+                  <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600 transition-colors group-hover/link:bg-brand-600 group-hover/link:text-white">
+                    <SolutionIcon name={service.icon} className="size-5" />
+                  </span>
+                  <span className="text-sm font-medium text-ink-600 transition-colors group-hover/link:text-brand-700">
+                    {service.title}
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
@@ -267,18 +266,22 @@ export function Header({ nav, cta, solutions }: HeaderProps) {
               </Link>
             ))}
 
-            {/* Quick access to individual solutions on mobile */}
+            {/* Quick access to individual solutions on mobile — flat grid */}
             {solutions.length > 0 && (
-              <div className="mt-2 flex flex-wrap justify-center gap-2 px-6">
+              <div className="mt-6 grid w-full max-w-md gap-3 px-6">
                 {solutions.map((service) => (
                   <Link
                     key={service.slug}
                     href={`${SOLUTIONS_HREF}/${service.slug}`}
                     onClick={() => setMenuOpen(false)}
-                    className="inline-flex items-center gap-2 rounded-full border border-ink-200 px-3 py-1.5 text-sm text-ink-600 hover:border-brand-600 hover:text-brand-700"
+                    className="flex items-center gap-3 rounded-xl border border-ink-100 bg-white p-4 transition-all hover:border-brand-200 hover:shadow-sm"
                   >
-                    <SolutionIcon name={service.icon} className="size-4" />
-                    {service.title}
+                    <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-brand-50 text-brand-600">
+                      <SolutionIcon name={service.icon} className="size-5" />
+                    </span>
+                    <span className="text-sm font-medium text-ink-600">
+                      {service.title}
+                    </span>
                   </Link>
                 ))}
               </div>

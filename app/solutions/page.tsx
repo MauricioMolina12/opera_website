@@ -10,9 +10,9 @@ import { Section } from "@/components/ui/section";
 import { getSolutionsContent } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "solutions",
+  title: "Soluciones",
   description:
-    "solutions integrales de Opera para optimizar espacios: tratamiento de pisos, limpieza de fachadas, jardinería y servicios para cada sector.",
+    "Soluciones integrales de Opera para optimizar espacios: tratamiento de pisos, limpieza de fachadas, jardinería y servicios para cada sector.",
 };
 
 /**

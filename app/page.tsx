@@ -5,6 +5,7 @@ import { ContactForm } from "@/components/sections/contact-form";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { Faq } from "@/components/sections/faq";
 import { Hero } from "@/components/sections/hero";
+import { Pqrsr } from "@/components/sections/pqrsr";
 import { ProcessWhatsApp } from "@/components/sections/process-whatsapp";
 import { Services } from "@/components/sections/services";
 import { Stats } from "@/components/sections/stats";
@@ -79,6 +80,15 @@ export default async function HomePage() {
         <Container size="wide">
           <Reveal>
             <Faq intro={home.faq.intro} items={home.faq.items} />
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* PQRSR */}
+      <Section surface="brand">
+        <Container size="wide">
+          <Reveal>
+            <Pqrsr />
           </Reveal>
         </Container>
       </Section>

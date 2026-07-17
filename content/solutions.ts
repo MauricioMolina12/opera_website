@@ -1,24 +1,5 @@
 import type { SolutionsPageContent } from "@/types/content";
 
-/**
- * "solutions" page editorial content.
- *
- * ── Images are TEMPORARY placeholders ──────────────────────────────────────
- * Photo `src` values point to Unsplash (whitelisted in `next.config.ts`) purely
- * so the layout renders during development. Replace each `src` with the final
- * brand asset (or a Sanity image URL); `alt` and everything else can stay.
- * ───────────────────────────────────────────────────────────────────────────
- */
-
-const UNSPLASH = "https://images.unsplash.com";
-/** Build a sized, optimized Unsplash placeholder URL. */
-const ph = (id: string, w = 1200) => `${UNSPLASH}/photo-${id}?q=80&w=${w}&auto=format&fit=crop`;
-
-const eventTest = () => {
-  console.log("Hola");
-}
-
-
 export const solutionsContent: SolutionsPageContent = {
   hero: {
     title: "Soluciones completas para espacios que inspiran y funcionan",
@@ -33,59 +14,129 @@ export const solutionsContent: SolutionsPageContent = {
 
   highlights: [
     {
-      eyebrow: "Obras civiles",
-      title: "Adecuaciones, mantenimiento y obras con calidad profesional.",
+      eyebrow: "Aseo integral empresarial",
+      title: "Limpieza, desinfección y cafetería con estándares profesionales.",
       benefits: [
-        "Soluciones constructivas que elevan el valor de tus espacios",
-        "Intervenciones rápidas, eficientes y con mínima afectación operativa",
-        "Infraestructura más segura, funcional y duradera",
-        "Acompañamiento experto desde la planificación hasta la entrega final",
-      ],
-      image: {
-        src: "/img/services/civil_works.png",
-        alt: "Jardín cuidado profesionalmente",
-      },
-    },
-    {
-      eyebrow: "Superficies",
-      title: "Pisos con acabado impecable y mayor durabilidad",
-      benefits: [
-        "Acabados de alto nivel con apariencia impecable y uniforme",
-        "Mayor resistencia al desgaste, impacto y tránsito constante",
-        "Materiales y técnicas que prolongan la vida útil del piso",
-        "Superficies fáciles de limpiar y mantener en el tiempo",
-      ],
-      image: {
-        src: "/img/services/floor_treatment.jpg",
-        alt: "Operario tratando un piso pulido",
-      },
-    },
-    {
-      eyebrow: "Aseo integral y cafetería",
-      title: "Espacios impecables y cafetería de calidad.",
-      benefits: [
-        "Ambientes siempre limpios, organizados y listos para operar",
-        "Protocolos de limpieza profunda que garantizan higiene y bienestar",
-        "Servicio de cafetería eficiente que mejora la experiencia del personal y visitantes",
-        "Atención constante que transmite orden, cuidado y profesionalismo",
+        "Ambientes saludables con protocolos avalados de desinfección",
+        "Personal capacitado y verificado para cada tipo de instalación",
+        "Planes flexibles que se adaptan a la operación sin interrumpir actividades",
+        "Supervisión permanente y reportes de calidad periódicos",
       ],
       image: {
         src: "/img/services/restroom.png",
-        alt: "Servicio de aseo integral y cafetería en oficina moderna",
+        alt: "Servicio de aseo integral empresarial",
       },
     },
     {
-      eyebrow: "Jardinería",
-      title: "Zonas verdes saludables y siempre bien cuidadas",
+      eyebrow: "Limpieza profesional de fachadas",
+      title: "Imagen corporativa renovada con trabajo seguro en altura.",
       benefits: [
-        "Espacios verdes siempre limpios, ordenados y visualmente atractivos",
-        "Mantenimiento constante que garantiza plantas sanas y vigorosas",
-        "Optimización del riego y nutrición para un crecimiento sostenible",
-        "Entornos naturales que mejoran la experiencia de usuarios y visitantes",
+        "Fachadas impecables que proyectan profesionalismo y cuidado",
+        "Técnicas especializadas que protegen y prolongan la vida de los materiales",
+        "Protocolos certificados de seguridad en altura con personal entrenado",
+        "Resultados duraderos que reducen la frecuencia de limpieza profunda",
+      ],
+      image: {
+        src: "/img/services/clean_front.jpg",
+        alt: "Fachada de edificio corporativo",
+      },
+    },
+    {
+      eyebrow: "Tratamiento y restauración de pisos",
+      title: "Recuperación estética y protección para todo tipo de superficies.",
+      benefits: [
+        "Devolvemos el brillo y uniformidad original a cualquier tipo de piso",
+        "Tratamientos protectores que evitan el desgaste prematuro",
+        "Diagnóstico especializado para cada material y nivel de desgaste",
+        "Reducción de costos de reposición con mantenimiento preventivo",
+      ],
+      image: {
+        src: "/img/services/floor_treatment.png",
+        alt: "Piso pulido y tratado profesionalmente",
+      },
+    },
+    {
+      eyebrow: "Mantenimiento de zonas verdes",
+      title: "Espacios naturales que mejoran la calidad ambiental y la imagen institucional.",
+      benefits: [
+        "Áreas verdes cuidadas que proyectan orden y profesionalismo",
+        "Técnicas especializadas para las especies y clima de la región Caribe",
+        "Bienestar laboral a través de entornos naturales saludables",
+        "Preservación del patrimonio natural con prácticas sostenibles",
       ],
       image: {
         src: "/img/services/gardening.jpg",
-        alt: "Jardín cuidado profesionalmente",
+        alt: "Jardín corporativo profesionalmente cuidado",
+      },
+    },
+    {
+      eyebrow: "Mantenimiento profesional de piscinas",
+      title: "Agua cristalina y equipos protegidos con mantenimiento programado.",
+      benefits: [
+        "Parámetros químicos óptimos para baño seguro y saludable",
+        "Mantenimiento preventivo que alarga la vida de bombas y filtros",
+        "Cumplimiento de estándares sanitarios exigidos por la normativa",
+        "Tranquilidad operativa al delegar el cuidado en profesionales certificados",
+      ],
+      image: {
+        src: "/img/services/commercial_cleaning.png",
+        alt: "Piscina limpia y cristalina",
+      },
+    },
+    {
+      eyebrow: "Servicio de recepción",
+      title: "La primera impresión de tu empresa, profesional y organizada.",
+      benefits: [
+        "Atención presencial que refleja la calidad y los valores de tu marca",
+        "Gestión eficiente de llamadas, visitantes y agenda corporativa",
+        "Flexibilidad operativa con horarios adaptados a cada empresa",
+        "Reducción de carga administrativa liberando a tu equipo operativo",
+      ],
+      image: {
+        src: "/img/services/receptionist.png",
+        alt: "Recepcionista profesional en oficina corporativa",
+      },
+    },
+    {
+      eyebrow: "Conserjería",
+      title: "Gestión profesional de edificios con control de acceso y atención a residentes.",
+      benefits: [
+        "Control de acceso peatonal y vehicular con protocolos claros",
+        "Atención humana de calidad a residentes, visitantes y proveedores",
+        "Tranquilidad para administradores con personal confiable y respaldado",
+        "Reportes diarios de novedades con trazabilidad completa",
+      ],
+      image: {
+        src: "/img/services/concierge.png",
+        alt: "Conserje profesional en edificio",
+      },
+    },
+    {
+      eyebrow: "Salvavidas",
+      title: "Seguridad acuática certificada con profesionales entrenados.",
+      benefits: [
+        "Vigilancia permanente que reduce drásticamente el riesgo de accidentes",
+        "Personal certificado en rescate, RCP y primeros auxilios",
+        "Cumplimiento de normativa colombiana para espacios acuáticos colectivos",
+        "Respuesta inmediata ante emergencias con protocolos establecidos",
+      ],
+      image: {
+        src: "/img/services/life_jacket.png",
+        alt: "Salvavidas profesional certificado",
+      },
+    },
+    {
+      eyebrow: "Aseo corporativo integral",
+      title: "Soluciones completas de limpieza para grandes superficies y corporaciones.",
+      benefits: [
+        "Estándar corporativo de calidad con protocolos de limpieza exigentes",
+        "Cobertura total: un solo proveedor para todas las necesidades",
+        "Supervisión in situ con reportes periódicos de gestión",
+        "Planes personalizados según horarios, flujos y exigencias operativas",
+      ],
+      image: {
+        src: "/img/services/corporate_cleaning.png",
+        alt: "Limpieza corporativa profesional",
       },
     },
   ],
@@ -93,6 +144,7 @@ export const solutionsContent: SolutionsPageContent = {
   sectors: {
     eyebrow: "Sectores en los que trabajamos",
     title: "Sectores en los que trabajamos",
+    subtitle: "Soluciones diseñadas para diferentes entornos donde la calidad, seguridad y eficiencia son esenciales.",
     items: [
       {
         title: "Corporativo",
@@ -101,7 +153,7 @@ export const solutionsContent: SolutionsPageContent = {
           src: "/img/sectors/corporate.png",
           alt: "Oficina corporativa",
         },
-        cta: { label: "Agenda tu servicio", href: "/#contacto", onClick: eventTest },
+        cta: { label: "Agenda tu servicio", href: "/#contacto" },
       },
       {
         title: "Residencial",
@@ -122,6 +174,12 @@ export const solutionsContent: SolutionsPageContent = {
         title: "Industrial",
         description: "Plantas industriales y centros de producción",
         image: { src: "/img/sectors/industrial.png", alt: "Planta industrial" },
+        cta: { label: "Agenda tu servicio", href: "/#contacto" },
+      },
+      {
+        title: "Instituciones",
+        description: "Colegios, universidades, entidades públicas y organizaciones",
+        image: { src: "/img/sectors/industrial.png", alt: "Institución educativa" },
         cta: { label: "Agenda tu servicio", href: "/#contacto" },
       },
     ],
@@ -150,7 +208,7 @@ export const solutionsContent: SolutionsPageContent = {
       {
         question: "¿En qué sectores trabajan?",
         answer:
-          "Atendemos espacios corporativos, residenciales, de salud, industriales y hoteleros, adaptando cada servicio a los requerimientos del sector.",
+          "Atendemos espacios corporativos, residenciales, de salud, industriales e instituciones, adaptando cada servicio a los requerimientos del sector.",
       },
       {
         question: "¿Los servicios se adaptan a cada espacio?",
