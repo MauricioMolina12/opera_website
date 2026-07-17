@@ -61,7 +61,7 @@ export function Hero({ content, slides }: HeroProps) {
 
   const activeSlide = slides[activeIndex];
 
-  const trackOffset = -(slides.length - 1 - activeIndex) * 100;
+  const trackOffset = -activeIndex * 100;
 
   return (
     <Container as="section" size="wide" className="max-sm:px-0! lg:pt-8 h-full">
@@ -72,9 +72,7 @@ export function Hero({ content, slides }: HeroProps) {
           className="absolute inset-0 flex will-change-transform transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
           style={{ transform: `translateX(${trackOffset}%)` }}
         >
-          {slides
-            .map((slide, index) => ({ slide, index }))
-            .map(({ slide, index }) => (
+          {slides.map((slide, index) => (
               <div key={slide.slug} className="relative h-full w-full shrink-0">
                 <Image
                   src={slide.image.src}
