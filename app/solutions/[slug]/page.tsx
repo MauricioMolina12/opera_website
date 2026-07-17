@@ -53,6 +53,7 @@ export default async function ServiceDetailPage({
 
   const ctaLabel = service.cta?.label ?? "Solicitar cotización";
   const sectorsList = service.sectors ?? [];
+  const asesorUrl = `https://wa.me/573006227196?text=${encodeURIComponent(`Hola, me interesa el servicio de ${service.title}. ¿Me pueden dar más información?`)}`;
   const whyUs = service.whyUs ?? [
     "Personal capacitado y certificado para cada tipo de servicio",
     "Supervisión permanente con reportes de calidad",
@@ -120,7 +121,7 @@ export default async function ServiceDetailPage({
                   <ArrowRightIcon className="size-4" />
                 </Button>
                 <Button
-                  href="https://wa.me/573006227196?text=Hola%2C%20quiero%20hablar%20con%20un%20asesor%20sobre%20el%20servicio%20de%20"
+                  href={asesorUrl}
                   size="lg"
                   variant="outline"
                   external
@@ -397,8 +398,8 @@ export default async function ServiceDetailPage({
                 Solicitar cotización
                 <ArrowRightIcon className="size-4" />
               </Button>
-              {/* <Button
-                href="https://wa.me/573006227196"
+              <Button
+                href={asesorUrl}
                 size="lg"
                 variant="outline"
                 external
@@ -406,7 +407,7 @@ export default async function ServiceDetailPage({
               >
                 Hablar con un asesor
                 <ArrowRightIcon className="size-4" />
-              </Button> */}
+              </Button>
             </div>
           </div>
         </Container>

@@ -73,7 +73,7 @@ export const siteConfig: SiteConfig = {
   ],
 
   legalLinks: [
-    { label: "Política de cookies", href: "/legal/cookies-policy" },
+    // { label: "Política de cookies", href: "/legal/cookies-policy" },
     { label: "Términos de servicio", href: "/legal/terms-and-conditions" },
     { label: "Política de privacidad", href: "/legal/privacy-policy" },
   ],

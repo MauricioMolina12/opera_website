@@ -41,7 +41,7 @@ export function SolutionsSectors({ content }: SolutionsSectorsProps) {
           />
 
           {/* Top-right corner arrow link */}
-          <Link
+          {/* <Link
             href={featured.cta.href}
             className="absolute right-4 top-4 z-10 grid size-9 place-items-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-brand-700"
             aria-label={featured.title}
@@ -59,7 +59,7 @@ export function SolutionsSectors({ content }: SolutionsSectorsProps) {
               <path d="M7 17L17 7" />
               <path d="M7 7h10v10" />
             </svg>
-          </Link>
+          </Link> */}
 
           {/* Text content */}
           <div className="absolute inset-x-0 bottom-0 z-10 p-6 text-white sm:p-8">
@@ -69,7 +69,7 @@ export function SolutionsSectors({ content }: SolutionsSectorsProps) {
             <p className="mt-2 max-w-lg text-sm text-white/80 sm:text-base">
               {featured.description}
             </p>
-            <Link
+            {/* <Link
               href={featured.cta.href}
               className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand-700 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-brand-600"
             >
@@ -87,7 +87,7 @@ export function SolutionsSectors({ content }: SolutionsSectorsProps) {
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
-            </Link>
+            </Link> */}
           </div>
         </div>
 
@@ -120,7 +120,7 @@ export function SolutionsSectors({ content }: SolutionsSectorsProps) {
             />
 
             {/* Top-right corner arrow link */}
-            <Link
+            {/* <Link
               href={sector.cta.href}
               className="absolute right-3 top-3 z-10 grid size-8 place-items-center rounded-full bg-white/15 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-brand-700"
               aria-label={sector.title}
@@ -138,7 +138,7 @@ export function SolutionsSectors({ content }: SolutionsSectorsProps) {
                 <path d="M7 17L17 7" />
                 <path d="M7 7h10v10" />
               </svg>
-            </Link>
+            </Link> */}
 
             {/* Text content */}
             <div className="absolute inset-x-0 bottom-0 z-10 p-4 text-white">

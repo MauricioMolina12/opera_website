@@ -11,10 +11,10 @@ const items = [
     href: "/legal/privacy-policy",
     label: "Política de Privacidad",
   },
-  {
-    href: "/legal/cookies-policy",
-    label: "Política de Cookies",
-  },
+  // {
+  //   href: "/legal/cookies-policy",
+  //   label: "Política de Cookies",
+  // },
   {
     href: "/legal/terms-and-conditions",
     label: "Términos de Servicio",

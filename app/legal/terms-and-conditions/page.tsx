@@ -15,7 +15,7 @@ export default function TermsAndConditionsPage() {
       <LegalHeader
         title="Términos de Servicio"
         description="Los presentes términos regulan el acceso y uso del sitio web de ASEO Y MULTISERVICIOS OPERA SAS. Al navegar y utilizar este sitio, el usuario acepta las condiciones aquí descritas."
-        lastUpdated="29 de junio de 2026"
+        lastUpdated="17 de junio de 2026"
       />
 
       <div className="mt-16 space-y-14">

@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
       <LegalHeader
         title="Política de Privacidad"
         description="Aseo y multiservicios opera SAS reconocemos la importancia de proteger la información personal de nuestros clientes, proveedores, candidatos y visitantes. Esta política explica cómo recopilamos, utilizamos, almacenamos y protegemos los datos personales obtenidos a través de nuestro sitio web."
-        lastUpdated="11 de julio de 2026"
+        lastUpdated="17 de julio de 2026"
       />
 
       <div className="mt-16 space-y-14">
@@ -28,11 +28,11 @@ export default function PrivacyPolicyPage() {
           <p>
             <strong>Empresa:</strong> OPERA SAS
             <br />
-            <strong>NIT:</strong> Pendiente por confirmar
+            <strong>NIT:</strong> 902.024.431-1
             <br />
             <strong>Domicilio:</strong> Barranquilla, Colombia
             <br />
-            <strong>Dirección:</strong> Pendiente por confirmar
+            {/* <strong>Dirección:</strong> Pendiente por confirmar */}
             <br />
             <strong>Correo:</strong> multiserviciosopera@gmail.com
             <br />
