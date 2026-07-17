@@ -28,7 +28,12 @@ export const metadata: Metadata = {
   description:
     "En Opera cuidamos y transformamos tus espacios con servicios profesionales de limpieza, jardinería y mantenimiento en Barranquilla.",
   icons: {
-    icon: "/img/logo.png",
+    icon: [
+      { url: "/img/favicon.ico", sizes: "any" },
+      { url: "/img/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/img/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: { url: "/img/logo.png", sizes: "180x180" },
   },
   openGraph: {
     type: "website",
