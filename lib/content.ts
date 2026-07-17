@@ -3,7 +3,7 @@ import "server-only";
 import { aboutContent } from "@/content/about";
 import { homeContent } from "@/content/home";
 import { siteConfig } from "@/content/site";
-import { solutionsContent } from "@/content/solutions";
+import { solutionsContent, services as allServices } from "@/content/solutions";
 import type {
   AboutPageContent,
   HomeContent,
@@ -43,14 +43,14 @@ export async function getSolutionsContent(): Promise<SolutionsPageContent> {
   return solutionsContent;
 }
 
-/** All services (used by the home grid and, later, the /solutions index). */
+/** All services (single source of truth from content/solutions.ts). */
 export async function getServices(): Promise<Service[]> {
-  return homeContent.services.items;
+  return allServices;
 }
 
-/** A single service by slug (for the future /solutions/[slug] route). */
+/** A single service by slug. */
 export async function getServiceBySlug(
   slug: string,
 ): Promise<Service | undefined> {
-  return homeContent.services.items.find((service) => service.slug === slug);
+  return allServices.find((service) => service.slug === slug);
 }

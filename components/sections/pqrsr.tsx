@@ -4,18 +4,18 @@ import { ArrowRightIcon } from "@/components/ui/icons";
 import { whatsAppUrl } from "@/lib/whatsapp";
 
 /**
- * PQRSR module — Peticiones, Quejas, Reclamos, Sugerencias y Requerimientos.
+ * PQRSF module — Peticiones, Quejas, Reclamos, Sugerencias y Felicitaciones.
  *
  * A conversion banner integrated into the existing site design, directing users
  * to WhatsApp for submitting their requests.
  */
 export function Pqrsr() {
   const whatsappLink = whatsAppUrl(
-    "Hola, buen día. Deseo presentar una PQRSR (Petición, Queja, Reclamo, Sugerencia o Requerimiento) relacionada con los servicios de Opera. Agradezco su atención y pronta respuesta.",
+    "Hola, buen día. Deseo presentar una PQRSF (Petición, Queja, Reclamo, Sugerencia o Felicitación) relacionada con los servicios de Opera. Agradezco su atención y pronta respuesta.",
   );
 
   return (
-    <Container as="section" size="wide" aria-label="PQRSR">
+    <Container as="section" size="wide" aria-label="PQRSF">
       <div className="relative overflow-hidden rounded-3xl">
         <div
           aria-hidden
@@ -24,11 +24,11 @@ export function Pqrsr() {
 
         <div className="relative mx-auto max-w-3xl px-6 py-16 text-center text-white sm:py-20">
           <span className="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-white/90">
-            PQRSR
+            PQRSF
           </span>
 
           <h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
-            ¿Tienes una petición, queja, reclamo, sugerencia o requerimiento?
+            ¿Tienes una petición, queja, reclamo, sugerencia o felicitación?
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/85 text-pretty">
@@ -44,7 +44,7 @@ export function Pqrsr() {
             className="mt-8"
             external
           >
-            Enviar PQRSR por WhatsApp
+            Enviar PQRSF por WhatsApp
             <ArrowRightIcon className="size-4" />
           </Button>
         </div>

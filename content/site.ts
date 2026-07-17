@@ -42,7 +42,7 @@ export const siteConfig: SiteConfig = {
         { label: "Sobre nosotros", href: "/about-us" },
         { label: "Nuestro equipo", href: "/about-us#equipo" },
         // { label: "Experiencia", href: "/#experiencia" },
-        { label: "Trabaja con nosotros", href: "/#contacto" },
+        // { label: "Trabaja con nosotros", href: "/#contacto" },
       ],
     },
     {

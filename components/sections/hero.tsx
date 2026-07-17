@@ -74,7 +74,6 @@ export function Hero({ content, slides }: HeroProps) {
         >
           {slides
             .map((slide, index) => ({ slide, index }))
-            .reverse()
             .map(({ slide, index }) => (
               <div key={slide.slug} className="relative h-full w-full shrink-0">
                 <Image

@@ -21,8 +21,17 @@ export const aboutContent: AboutPageContent = {
   hero: {
     title: "Calidad, eficiencia y confianza en cada detalle",
     highlight: "confianza",
-    subtitle:
-      "En Opera ofrecemos soluciones a medida que simplifican tu día a día y potencian lo que más importa: tu tranquilidad.",
+    subtitle: `
+      OPERA es una empresa especializada en servicios
+integrales de aseo, mantenimiento y gestión operativa para
+copropiedades y organizaciones. Nuestra operación se basa
+en la organización, el control y la supervisión semanal
+constante, garantizando espacios limpios, seguros y
+funcionales. Contamos con talento humano calificado y
+procesos definidos que nos permiten adaptarnos a cada
+cliente, asegurando continuidad del servicio, cumplimiento
+normativo y resultados visibles.
+     `,
     cta: { label: "Comenzar", href: "/#contacto" },
     image: {
       src: "/img/banner_about_us.png?v=2",
@@ -75,8 +84,15 @@ export const aboutContent: AboutPageContent = {
   mission: {
     title: "Nuestra misión",
     paragraphs: [
-      "En Opera trabajamos para transformar espacios en entornos más funcionales, organizados y eficientes. Nuestra misión es ofrecer soluciones integrales que simplifiquen operaciones, mejoren la experiencia de las personas y generen confianza en cada detalle.",
-      "A través de un enfoque moderno, profesional y orientado a la calidad, buscamos convertirnos en un aliado estratégico para empresas y proyectos que valoran el orden, la imagen y el buen funcionamiento de sus espacios.",
+      `En Aseo y Multiservicios Opera S.A.S. prestamos servicios
+integrales de gestión de mantenimiento y operación de
+áreas comunes, aplicando protocolos estandarizados de
+limpieza, conservación y soporte técnico. Implementamos
+metodologías de control de calidad, gestión preventiva y
+correctiva, optimización de recursos y cumplimiento
+normativo, garantizando ambientes seguros, funcionales y
+sostenibles para comunidades residenciales, comerciales e
+institucionales.`,
     ],
     bullets: [
       "Soluciones integrales adaptadas a cada espacio",
@@ -93,8 +109,14 @@ export const aboutContent: AboutPageContent = {
   vision: {
     title: "Nuestra visión",
     paragraphs: [
-      "En Opera buscamos convertirnos en una referencia en soluciones integrales para espacios y operaciones, destacándonos por nuestra calidad, eficiencia y enfoque moderno.",
-      "Nuestra visión es construir relaciones de confianza a largo plazo, ofreciendo servicios que evolucionen junto a las necesidades de cada cliente y contribuyan a crear entornos más funcionales, organizados y sostenibles.",
+      `En Aseo y Multiservicios Opera S.A.S. proyectamos
+consolidarnos como referente nacional en la provisión de
+servicios generales y mantenimiento de infraestructura
+comunitaria, mediante la adopción de tecnologías de
+gestión, certificaciones de calidad y prácticas sostenibles.
+Aspiramos a liderar el sector por nuestra capacidad de
+innovación, eficiencia operativa y generación de valor
+agregado en la administración de espacios compartidos.`,
     ],
     bullets: [
       "Ser un aliado estratégico para cada cliente",
@@ -121,11 +143,16 @@ export const aboutContent: AboutPageContent = {
         name: "Yesid Clavijo",
         image: { src: "/img/team/yesid.png", alt: "Yesid Clavijo" },
         role: "CEO",
-        specialties: "Dirección estratégica · Gestión operativa · Desarrollo de negocio",
+        specialties:
+          "Dirección estratégica · Gestión operativa · Desarrollo de negocio",
         bio: "Lidera la visión de Opera con más de 5 años de experiencia en servicios integrales para empresas e instituciones. Enfocado en calidad, cumplimiento y confianza como pilares de cada proyecto.",
         years: "+5 años",
-        technologies: ["Liderazgo", "Planeación estratégica", "Gestión de equipos"],
-        socials: teamSocials
+        technologies: [
+          "Liderazgo",
+          "Planeación estratégica",
+          "Gestión de equipos",
+        ],
+        socials: teamSocials,
       },
       {
         name: "Leonardo Movilla",
@@ -134,18 +161,26 @@ export const aboutContent: AboutPageContent = {
         specialties: "Asesoría legal · Contratación · Protección de datos",
         bio: "Especializado en asesoría jurídica para empresas del sector servicios. Aporta solidez legal y cumplimiento normativo a cada contrato y operación de Opera.",
         years: "+10 años",
-        technologies: ["Derecho corporativo", "Cumplimiento normativo", "Contract Law"],
-        socials: teamSocials
+        technologies: [
+          "Derecho corporativo",
+          "Cumplimiento normativo",
+          "Contract Law",
+        ],
+        socials: teamSocials,
       },
       {
         name: "Jennifer Clavijo",
         image: { src: "/img/team/jennifer.jpg", alt: "Jennifer Clavijo" },
-        role: "COO",
+        role: "COO · Ingeniera Sistemas / Industrial",
         specialties: "Operaciones · Optimización · Calidad",
         bio: "Dirige la ejecución operativa de Opera garantizando calidad, eficiencia y satisfacción del cliente en cada proyecto. Experta en gestión de equipos y mejora continua de procesos.",
         years: "+5 años",
-        technologies: ["Gestión de operaciones", "Control de calidad", "Liderazgo de equipos"],
-        socials: teamSocials
+        technologies: [
+          "Gestión de operaciones",
+          "Control de calidad",
+          "Liderazgo de equipos",
+        ],
+        socials: teamSocials,
       },
     ],
   },
