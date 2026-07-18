@@ -21,7 +21,7 @@ export function CtaBanner({ content }: CtaBannerProps) {
           <>
             <ParallaxImage
               image={content.background}
-              className="absolute inset-0"
+              className="absolute inset-0 object-contain"
               sizes="(max-width: 1440px) 100vw, 1440px"
             />
             <div

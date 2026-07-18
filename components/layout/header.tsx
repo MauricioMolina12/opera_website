@@ -12,6 +12,7 @@ import {
   SolutionIcon,
 } from "@/components/ui/icons";
 import { Logo } from "@/components/ui/logo";
+import { SearchInput } from "@/components/search/SearchInput";
 import { cn } from "@/lib/utils";
 import type { Service, SiteConfig } from "@/types/content";
 
@@ -122,8 +123,17 @@ export function Header({ nav, cta, solutions }: HeaderProps) {
           {/* Left: logo */}
           <Logo />
 
-          {/* Right: navigation + CTA */}
-          <div className="flex items-center gap-8">
+          {/* Center: search (desktop) */}
+          <div className="hidden flex-1 justify-center px-6 lg:flex">
+            <SearchInput />
+          </div>
+
+          {/* Right: navigation + CTA + mobile search + menu */}
+          <div className="flex items-center gap-6">
+            {/* Mobile search icon */}
+            <div className="lg:hidden">
+              <SearchInput />
+            </div>
             <nav
               aria-label="Principal"
               className="hidden items-center gap-8 lg:flex"

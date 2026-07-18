@@ -394,16 +394,15 @@ export default async function ServiceDetailPage({
               transformar tus espacios con calidad profesional.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Button href="/#contacto" size="lg" variant="white">
+              {/* <Button href="/#contacto" size="lg" variant="white">
                 Solicitar cotización
                 <ArrowRightIcon className="size-4" />
-              </Button>
+              </Button> */}
               <Button
                 href={asesorUrl}
                 size="lg"
-                variant="outline"
+                variant="white"
                 external
-                className="border-white/30 text-white hover:bg-white/10"
               >
                 Hablar con un asesor
                 <ArrowRightIcon className="size-4" />

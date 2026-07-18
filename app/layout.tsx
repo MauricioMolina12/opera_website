@@ -5,7 +5,8 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { getServices, getSiteConfig } from "@/lib/content";
-
+import { SearchProvider } from "@/components/search/SearchContext";
+import { SearchModal } from "@/components/search/SearchModal";
 
 import "./globals.css";
 import { WhatsAppBtn } from "@/components/ui/whatsAppBtn";
@@ -55,8 +56,11 @@ export default async function RootLayout({
   return (
     <html lang="es" className={`${sans.variable} h-full`}>
       <body className="flex min-h-full flex-col bg-white relative">
-        <Header nav={config.nav} cta={config.headerCta} solutions={services} />
-        <main className="flex-1">{children}</main>
+        <SearchProvider services={services}>
+          <Header nav={config.nav} cta={config.headerCta} solutions={services} />
+          <SearchModal />
+          <main className="flex-1">{children}</main>
+        </SearchProvider>
         <Footer config={config} />
         <WhatsAppBtn></WhatsAppBtn>
       </body>
