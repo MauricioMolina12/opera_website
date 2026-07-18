@@ -5,6 +5,8 @@ import { useCallback, useEffect, useRef, useState, type RefObject } from "react"
 /* ──────────────────────────────────────────────────────────────
  *  useKeyboardNavigation
  *  Handle ↑ ↓ Enter from any parent that renders a list.
+ *  Uses refs internally so it never goes stale — safe to call
+ *  from a long-lived event listener.
  * ────────────────────────────────────────────────────────────── */
 
 export function useKeyboardNavigation(
@@ -12,42 +14,38 @@ export function useKeyboardNavigation(
   onSelect: (index: number) => void,
 ) {
   const activeIndexRef = useRef(-1);
+  const onSelectRef = useRef(onSelect);
+  onSelectRef.current = onSelect;
 
-  const handleKey = useCallback(
-    (e: KeyboardEvent) => {
-      if (itemCount === 0) {
-        activeIndexRef.current = -1;
-        return false;
-      }
+  const itemCountRef = useRef(itemCount);
+  itemCountRef.current = itemCount;
 
-      let index = activeIndexRef.current;
+  const handleKey = useCallback((e: KeyboardEvent) => {
+    const count = itemCountRef.current;
+    if (count === 0) {
+      activeIndexRef.current = -1;
+      return;
+    }
 
-      switch (e.key) {
-        case "ArrowDown": {
-          e.preventDefault();
-          index = index < itemCount - 1 ? index + 1 : 0;
-          activeIndexRef.current = index;
-          return true;
+    let index = activeIndexRef.current;
+
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        activeIndexRef.current = index < count - 1 ? index + 1 : 0;
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        activeIndexRef.current = index > 0 ? index - 1 : count - 1;
+        break;
+      case "Enter":
+        e.preventDefault();
+        if (index >= 0 && index < count) {
+          onSelectRef.current(index);
         }
-        case "ArrowUp": {
-          e.preventDefault();
-          index = index > 0 ? index - 1 : itemCount - 1;
-          activeIndexRef.current = index;
-          return true;
-        }
-        case "Enter": {
-          e.preventDefault();
-          if (index >= 0 && index < itemCount) {
-            onSelect(index);
-          }
-          return true;
-        }
-        default:
-          return false;
-      }
-    },
-    [itemCount, onSelect],
-  );
+        break;
+    }
+  }, []);
 
   // Reset index when results change.
   useEffect(() => {
@@ -138,6 +136,9 @@ export function useScrollLock(isActive: boolean) {
  * ────────────────────────────────────────────────────────────── */
 
 export function useSearchHotkey(onOpen: () => void) {
+  const onOpenRef = useRef(onOpen);
+  onOpenRef.current = onOpen;
+
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       // Ignore when typing in inputs / textareas / contenteditable.
@@ -153,13 +154,13 @@ export function useSearchHotkey(onOpen: () => void) {
       const isMod = e.metaKey || e.ctrlKey;
       if ((isMod && e.key === "k") || (!isMod && e.key === "/")) {
         e.preventDefault();
-        onOpen();
+        onOpenRef.current();
       }
     };
 
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [onOpen]);
+  }, []);
 }
 
 /* ──────────────────────────────────────────────────────────────

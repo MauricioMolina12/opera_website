@@ -1,12 +1,13 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Search as SearchIcon, X as XIcon } from "lucide-react";
 import { useSearch } from "./SearchContext";
 import { SearchResultCard } from "./SearchResultCard";
 import { SearchEmptyState } from "./SearchEmptyState";
 import { useKeyboardNavigation } from "./SearchHooks";
+import { whatsAppRedirect } from "@/lib/whatsapp";
 
 const SUGGESTIONS = [
   { label: "Aseo integral empresarial", slug: "aseo-integral" },
@@ -19,7 +20,8 @@ const SUGGESTIONS = [
 export function SearchModal() {
   const { open, setOpen, query, setQuery, results, idle } = useSearch();
   const router = useRouter();
-  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const onSelect = useCallback(
     (index: number) => {
@@ -38,32 +40,52 @@ export function SearchModal() {
     onSelect,
   );
 
-  const handleInputKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      handleKey(e.nativeEvent);
-    },
-    [handleKey],
-  );
-
   const close = useCallback(() => {
     setOpen(false);
     setQuery("");
   }, [setOpen, setQuery]);
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === "Escape") {
-        close();
-      }
-    },
-    [close],
-  );
-
   const handleContact = useCallback(() => {
     setOpen(false);
     setQuery("");
-    router.push("/#contacto");
-  }, [setOpen, setQuery, router]);
+    whatsAppRedirect("Quisiera ayuda para encontrar el servicio que necesito.");
+  }, [setOpen, setQuery]);
+
+  // Keep latest handleKey in a ref to avoid stale closures
+  const handleKeyRef = useRef(handleKey);
+  handleKeyRef.current = handleKey;
+
+  const closeRef = useRef(close);
+  closeRef.current = close;
+
+  // Global keyboard listeners (ESC + arrow navigation)
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      // ESC => close
+      if (e.key === "Escape") {
+        closeRef.current();
+        return;
+      }
+
+      // Arrow keys and Enter always work when the modal is open
+      handleKeyRef.current(e);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  // Focus input when modal opens
+  useEffect(() => {
+    if (open) {
+      // Small delay to ensure DOM is ready
+      requestAnimationFrame(() => {
+        inputRef.current?.focus();
+      });
+    }
+  }, [open]);
 
   if (!open) return null;
 
@@ -71,16 +93,12 @@ export function SearchModal() {
   const showSuggestions = idle && !hasResults;
 
   return (
-    // Un solo contenedor: backdrop + modal.
-    // Clics en el backdrop (el div en sí) cierran el modal.
-    // Clics dentro del panel modal se detienen con stopPropagation.
     <div
       className="fixed inset-0 z-[60] bg-black/10"
-      onKeyDown={handleKeyDown}
       onClick={close}
     >
       <div
-        ref={containerRef}
+        ref={panelRef}
         className="mx-auto mt-[5.5rem] flex w-full max-w-[700px] flex-col px-4"
         onClick={(e) => e.stopPropagation()}
       >
@@ -94,13 +112,13 @@ export function SearchModal() {
           <div className="flex items-center gap-3 border-b border-ink-100 px-5 py-4">
             <SearchIcon className="size-5 shrink-0 text-ink-400" />
             <input
+              ref={inputRef}
               type="text"
               autoComplete="off"
               autoCorrect="off"
               spellCheck={false}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleInputKeyDown}
               placeholder="¿Qué servicio estás buscando?"
               className="flex-1 bg-transparent text-base text-ink-800 placeholder:text-ink-400 focus:outline-none"
               aria-label="Buscar servicios"

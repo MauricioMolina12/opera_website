@@ -6,7 +6,7 @@ import { LegalHeader } from "../components/legal-header";
 export const metadata: Metadata = {
   title: "Política de Privacidad",
   description:
-    "Conozca cómo OPERA SAS recopila, utiliza, protege y trata los datos personales de los usuarios de su sitio web.",
+    "Conozca cómo ASEO Y MULTISERVICIOS OPERA SAS recopila, utiliza, protege y trata los datos personales de los usuarios de su sitio web.",
 };
 
 export default function PrivacyPolicyPage() {
@@ -14,27 +14,25 @@ export default function PrivacyPolicyPage() {
     <>
       <LegalHeader
         title="Política de Privacidad"
-        description="Aseo y multiservicios opera SAS reconocemos la importancia de proteger la información personal de nuestros clientes, proveedores, candidatos y visitantes. Esta política explica cómo recopilamos, utilizamos, almacenamos y protegemos los datos personales obtenidos a través de nuestro sitio web."
+        description="ASEO Y MULTISERVICIOS OPERA SAS reconocemos la importancia de proteger la información personal de nuestros clientes, proveedores, candidatos y visitantes. Esta política explica cómo recopilamos, utilizamos, almacenamos y protegemos los datos personales obtenidos a través de nuestro sitio web."
         lastUpdated="17 de julio de 2026"
       />
 
       <div className="mt-16 space-y-14">
         <LegalSection title="1. Responsable del tratamiento de los datos personales">
           <p>
-            OPERA SAS es la responsable del tratamiento de los datos personales
+            ASEO Y MULTISERVICIOS OPERA SAS es la responsable del tratamiento de los datos personales
             recopilados a través del sitio web <strong>operasas.com</strong>.
           </p>
 
           <p>
-            <strong>Empresa:</strong> OPERA SAS
+            <strong>Empresa:</strong> ASEO Y MULTISERVICIOS OPERA SAS
             <br />
             <strong>NIT:</strong> 902.024.431-1
             <br />
             <strong>Domicilio:</strong> Barranquilla, Colombia
             <br />
-            {/* <strong>Dirección:</strong> Pendiente por confirmar */}
-            <br />
-            <strong>Correo:</strong> multiserviciosopera@gmail.com
+            <strong>Correo:</strong> multiserviciosoperasas@gmail.com
             <br />
             <strong>Teléfono:</strong> +57 300 6227196
           </p>
@@ -76,14 +74,12 @@ export default function PrivacyPolicyPage() {
               Establecer comunicaciones relacionadas con los servicios
               solicitados.
             </li>
-            <li>
-              Gestionar procesos de selección cuando se reciban hojas de vida.
-            </li>
+            <li>Gestionar procesos de selección cuando se reciban hojas de vida.</li>
             <li>Cumplir obligaciones legales y regulatorias.</li>
           </ul>
 
           <p>
-            OPERA SAS no utilizará la información personal para finalidades
+            ASEO Y MULTISERVICIOS OPERA SAS no utilizará la información personal para finalidades
             distintas a las aquí descritas sin la autorización previa del
             titular, salvo cuando la ley lo permita.
           </p>
@@ -114,7 +110,7 @@ export default function PrivacyPolicyPage() {
 
         <LegalSection title="6. Compartición de información">
           <p>
-            OPERA SAS no vende, alquila ni comercializa datos personales de sus
+            ASEO Y MULTISERVICIOS OPERA SAS no vende, alquila ni comercializa datos personales de sus
             usuarios.
           </p>
 
@@ -169,11 +165,11 @@ export default function PrivacyPolicyPage() {
           </p>
 
           <p>
-            <strong>multiserviciosopera@gmail.com</strong>
+            <strong>multiserviciosoperasas@gmail.com</strong>
           </p>
 
           <p>
-            OPERA SAS atenderá las solicitudes dentro de los plazos establecidos
+            ASEO Y MULTISERVICIOS OPERA SAS atenderá las solicitudes dentro de los plazos establecidos
             por la legislación colombiana aplicable.
           </p>
         </LegalSection>
@@ -182,7 +178,7 @@ export default function PrivacyPolicyPage() {
           <p>
             Las hojas de vida remitidas voluntariamente por los candidatos serán
             utilizadas exclusivamente para procesos de selección presentes o
-            futuros dentro de OPERA SAS.
+            futuros dentro de ASEO Y MULTISERVICIOS OPERA SAS.
           </p>
 
           <p>
@@ -195,7 +191,7 @@ export default function PrivacyPolicyPage() {
         <LegalSection title="11. Enlaces externos">
           <p>
             Nuestro sitio web puede contener enlaces hacia plataformas de
-            terceros, como WhatsApp. OPERA SAS no es responsable de las
+            terceros, como WhatsApp. ASEO Y MULTISERVICIOS OPERA SAS no es responsable de las
             prácticas de privacidad, contenido o políticas aplicadas por dichos
             servicios externos, por lo que recomendamos consultar sus
             respectivas políticas antes de proporcionar información personal.
@@ -204,7 +200,7 @@ export default function PrivacyPolicyPage() {
 
         <LegalSection title="12. Modificaciones de esta política">
           <p>
-            OPERA SAS podrá modificar esta Política de Privacidad cuando resulte
+            ASEO Y MULTISERVICIOS OPERA SAS podrá modificar esta Política de Privacidad cuando resulte
             necesario para adaptarla a cambios legales, regulatorios,
             tecnológicos o relacionados con nuestros servicios.
           </p>
