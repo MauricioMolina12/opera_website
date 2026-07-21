@@ -138,6 +138,17 @@ export function Footer({ config }: FooterProps) {
           <p>
             © {currentYear} Opera. Todos los derechos reservados.
           </p>
+          <p>
+            Desarrollado por{" "}
+            <a
+              href="https://stargrowstudio.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand-700"
+            >
+              Star Grow Studio
+            </a>
+          </p>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {config.legalLinks.map((link) => (
               <li key={link.href}>
