@@ -25,8 +25,90 @@ import { getHomeContent } from "@/lib/content";
 export default async function HomePage() {
   const home = await getHomeContent();
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://operasas.com/#website",
+    url: "https://operasas.com",
+    name: "Opera | Soluciones Integrales de Limpieza y Mantenimiento",
+    description:
+      "En Opera cuidamos y transformamos tus espacios con servicios profesionales de limpieza, jardinería y mantenimiento en Barranquilla.",
+    publisher: {
+      "@id": "https://operasas.com/#organization",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://operasas.com/?q={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://operasas.com/#localbusiness",
+    name: "ASEO Y MULTISERVICIOS OPERA SAS",
+    url: "https://operasas.com",
+    logo: "https://operasas.com/img/logo.png",
+    image: "https://operasas.com/img/logo.png",
+    description:
+      "Soluciones integrales de limpieza, jardinería y mantenimiento en Barranquilla, Colombia.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Barranquilla",
+      addressRegion: "Atlántico",
+      addressCountry: "CO",
+    },
+    telephone: "+57-300-6227196",
+    email: "multiserviciosoperasas@gmail.com",
+    priceRange: "$$",
+    openingHours: "Mo-Fr 07:00-18:00",
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Barranquilla",
+      },
+      {
+        "@type": "State",
+        name: "Atlántico",
+      },
+    ],
+  };
+
+  const serviceSchemas = home.services.items.map((service) => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    provider: {
+      "@id": "https://operasas.com/#organization",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Barranquilla",
+    },
+  }));
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      {serviceSchemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <div className="h-[calc(100vh-6rem)]">
         <Hero content={home.hero} slides={home.services.items} />
       </div>

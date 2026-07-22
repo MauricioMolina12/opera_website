@@ -79,6 +79,7 @@ export function Hero({ content, slides }: HeroProps) {
                   alt={slide.image.alt}
                   fill
                   priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
                   sizes="(max-width: 1440px) 100vw, 1440px"
                   className="object-cover"
                 />

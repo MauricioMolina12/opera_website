@@ -12,7 +12,23 @@ import { getAboutContent } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Quiénes somos",
   description:
-    "Conoce a Opera: nuestros valores, misión y visión, y el equipo detrás de soluciones integrales en limpieza, jardinería y mantenimiento.",
+    "Conoce a Opera: nuestros valores, misión y visión, y el equipo detrás de soluciones integrales en limpieza, jardinería y mantenimiento en Barranquilla.",
+  keywords: [
+    "quienes somos Opera",
+    "empresa de limpieza Barranquilla",
+    "misión y visión",
+    "equipo Opera",
+    "valores corporativos",
+  ],
+  alternates: {
+    canonical: "https://operasas.com/about-us",
+  },
+  openGraph: {
+    title: "Quiénes somos | Opera",
+    description:
+      "Conoce a Opera: nuestros valores, misión y visión, y el equipo detrás de soluciones integrales en limpieza, jardinería y mantenimiento.",
+    url: "https://operasas.com/about-us",
+  },
 };
 
 /**
@@ -24,8 +40,49 @@ export const metadata: Metadata = {
 export default async function QuienesSomosPage() {
   const about = await getAboutContent();
 
+  const aboutPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": "https://operasas.com/about-us/#aboutpage",
+    name: "Quiénes somos | Opera",
+    description:
+      "Conoce a Opera: nuestros valores, misión y visión, y el equipo detrás de soluciones integrales en limpieza, jardinería y mantenimiento en Barranquilla.",
+    mainEntity: {
+      "@type": "Organization",
+      "@id": "https://operasas.com/#organization",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: "https://operasas.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Quiénes somos",
+        item: "https://operasas.com/about-us",
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+
       {/* Hero */}
       <Section surface="white" spacing="md">
         <Container size="wide">

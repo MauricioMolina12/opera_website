@@ -7,6 +7,19 @@ export const metadata: Metadata = {
   title: "Términos de Servicio",
   description:
     "Condiciones que regulan el acceso y uso del sitio web de ASEO Y MULTISERVICIOS OPERA SAS, así como la relación con los usuarios que solicitan información sobre sus servicios.",
+  alternates: {
+    canonical: "https://operasas.com/legal/terms-and-conditions",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Términos de Servicio | Opera",
+    description:
+      "Condiciones que regulan el acceso y uso del sitio web de ASEO Y MULTISERVICIOS OPERA SAS.",
+    url: "https://operasas.com/legal/terms-and-conditions",
+  },
 };
 
 export default function TermsAndConditionsPage() {

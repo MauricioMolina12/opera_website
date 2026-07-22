@@ -31,13 +31,23 @@ export async function generateMetadata({
     title: seo?.metaTitle ?? service.title,
     description: seo?.metaDescription ?? service.description,
     keywords: seo?.keywords?.join(", "),
-    openGraph: seo
-      ? {
-          title: seo.ogTitle,
-          description: seo.ogDescription,
-          images: service.image ? [{ url: service.image.src }] : [],
-        }
-      : undefined,
+    alternates: {
+      canonical: `https://operasas.com/solutions/${slug}`,
+    },
+    openGraph: {
+      title: seo?.ogTitle ?? `${service.title} | Opera`,
+      description: seo?.ogDescription ?? service.description,
+      url: `https://operasas.com/solutions/${slug}`,
+      images: service.image
+        ? [{ url: service.image.src, alt: service.image.alt }]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.ogTitle ?? `${service.title} | Opera`,
+      description: seo?.ogDescription ?? service.description,
+      images: service.image ? [service.image.src] : [],
+    },
   };
 }
 
@@ -62,8 +72,63 @@ export default async function ServiceDetailPage({
     "Más de 5 años generando confianza en empresas e instituciones",
   ];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: "https://operasas.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Soluciones",
+        item: "https://operasas.com/solutions",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: service.title,
+        item: `https://operasas.com/solutions/${slug}`,
+      },
+    ],
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    provider: {
+      "@id": "https://operasas.com/#organization",
+    },
+    areaServed: {
+      "@type": "City",
+      name: "Barranquilla",
+    },
+    offers: {
+      "@type": "Offer",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        priceCurrency: "COP",
+      },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+
       {/* Hero */}
       <section className="py-8">
         <Container size="wide">

@@ -12,7 +12,24 @@ import { getSolutionsContent } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Soluciones",
   description:
-    "Soluciones integrales de Opera para optimizar espacios: tratamiento de pisos, limpieza de fachadas, jardinería y servicios para cada sector.",
+    "Soluciones integrales de Opera para optimizar espacios: tratamiento de pisos, limpieza de fachadas, jardinería y servicios para cada sector en Barranquilla.",
+  keywords: [
+    "soluciones limpieza",
+    "servicios de mantenimiento Barranquilla",
+    "tratamiento de pisos",
+    "limpieza de fachadas",
+    "jardinería profesional",
+    "servicios empresariales",
+  ],
+  alternates: {
+    canonical: "https://operasas.com/solutions",
+  },
+  openGraph: {
+    title: "Soluciones | Opera",
+    description:
+      "Soluciones integrales de Opera para optimizar espacios: tratamiento de pisos, limpieza de fachadas, jardinería y servicios para cada sector.",
+    url: "https://operasas.com/solutions",
+  },
 };
 
 /**

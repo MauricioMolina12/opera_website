@@ -7,6 +7,19 @@ export const metadata: Metadata = {
   title: "Política de Privacidad",
   description:
     "Conozca cómo ASEO Y MULTISERVICIOS OPERA SAS recopila, utiliza, protege y trata los datos personales de los usuarios de su sitio web.",
+  alternates: {
+    canonical: "https://operasas.com/legal/privacy-policy",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    title: "Política de Privacidad | Opera",
+    description:
+      "Conozca cómo ASEO Y MULTISERVICIOS OPERA SAS recopila, utiliza, protege y trata los datos personales.",
+    url: "https://operasas.com/legal/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {
