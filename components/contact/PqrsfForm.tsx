@@ -85,7 +85,7 @@ export function PqrsfForm({
       className="flex min-h-0 flex-1 flex-col"
     >
       {/* Scrollable field area */}
-      <div className="min-h-0 flex-1 space-y-5 overflow-y-auto pr-2">
+      <div className="min-h-0 flex-1 space-y-5 overflow-y-auto px-2">
         {/* Tipo de solicitud */}
         <div>
           <label
