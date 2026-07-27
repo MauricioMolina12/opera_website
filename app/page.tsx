@@ -109,7 +109,7 @@ export default async function HomePage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
-      <div className="min-h-[calc(100vh-6rem)]">
+      <div className="min-h-[calc(90vh-6rem)]">
         <Hero content={home.hero} slides={home.services.items} />
       </div>
 

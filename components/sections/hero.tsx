@@ -141,7 +141,7 @@ export function Hero({ content, slides }: HeroProps) {
         </div>
 
         {/* Bottom controls: progress dots + arrows + play/pause */}
-        <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-2 px-3 pb-3 sm:px-6 sm:pb-6">
+        <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between gap-2 px-3 pb-5 sm:px-6 sm:pb-6">
           {/* Progress dots */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             {slides.map((slide, index) => (

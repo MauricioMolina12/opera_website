@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
@@ -9,7 +8,9 @@ import { SearchProvider } from "@/components/search/SearchContext";
 import { SearchModal } from "@/components/search/SearchModal";
 
 import "./globals.css";
-import { WhatsAppBtn } from "@/components/ui/whatsAppBtn";
+import { ContactProvider } from "@/context/contact-context";
+import { ContactModal } from "@/components/contact/ContactModal";
+import { ContactButtonWrapper } from "@/components/contact/ContactButtonWrapper";
 
 
 // Variable font exposed as a CSS variable consumed by `--font-sans` in globals.css.
@@ -158,13 +159,16 @@ export default async function RootLayout({
         />
       </head>
       <body className="flex min-h-full flex-col bg-white relative">
-        <SearchProvider services={services}>
-          <Header nav={config.nav} cta={config.headerCta} solutions={services} />
-          <SearchModal />
-          <main className="flex-1">{children}</main>
-        </SearchProvider>
-        <Footer config={config} />
-        <WhatsAppBtn></WhatsAppBtn>
+        <ContactProvider>
+          <SearchProvider services={services}>
+            <Header nav={config.nav} cta={config.headerCta} solutions={services} />
+            <SearchModal />
+            <main className="flex-1">{children}</main>
+          </SearchProvider>
+          <Footer config={config} />
+          <ContactButtonWrapper />
+          <ContactModal />
+        </ContactProvider>
       </body>
     </html>
   );
